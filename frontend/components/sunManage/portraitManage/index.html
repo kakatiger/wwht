@@ -1,0 +1,23 @@
+<div class='portraitManage' >
+	<div class="config-manage w1582">
+	    <div class="center-b-box bcf cp">
+	        <span class="center-box w394 h56 f20" ui-sref="contentManage" ui-sref-active="active-b" >内容待处理({{sunPending.content}})</span>
+	        <span class="center-box w394 h56 f20" ui-sref="commentManage" ui-sref-active="active-b">评论待处理({{sunPending.comment}})</span>
+	        <span class="center-box w394 h56 f20"  ui-sref="opinionManage" ui-sref-active="active-b" >建议待处理({{sunPending.avatarUser}})</span>
+	        <span class="center-box w394 h56 f20"  ui-sref="portraitManage" ui-sref-active="active-b" >头像待处理({{sunPending.avatar}})</span>
+	    </div>
+	</div>
+	<div class='sun_por_content wrap df' ng-if='sunPending.avatar!=0'>
+		<div class='sun_por_content_img'> 
+			<img src="{{commentAvatar.avatar}}">
+		</div>
+		<div class='sun_por_content_text'>
+			<div class='f60 mt100 ml100'>用户昵称: <span class='ml10'>{{commentAvatar.name}}</span></div>
+			<div class='f60 mt30 ml100'>用户Id: <span class='ml10'>{{commentAvatar.userId}}</span></div>
+			<div class='sun_por_content_text_btn'>
+				<div class="bt w164 h52 f14  ml30 lh2  " ng-click='adopt(commentAvatar.userId,commentAvatar.id,commentAvatar.avatar)'>通过</div>
+				<div class="bt w164 h52 f14  ml30 lh2  " ng-click='notAdopt(commentAvatar.userId,commentAvatar.id,commentAvatar.avatar)'>不通过</div>
+			</div>
+		</div>
+	</div>
+</div>

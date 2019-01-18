@@ -1,0 +1,85 @@
+<div class="exit_adv center-box column" >
+     <div class='between mt20'>
+        <div>
+          <h3>编辑闪屏</h3>
+        </div>
+        <div class='ml700 '>
+                 <span ng-click="close_modal()" class="glyphicon glyphicon-remove f30 cp" style="color: rgb(5, 0, 0);"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> </font></font></span>
+         </div>
+    </div>
+    <div class='mr41 mt100'>
+        <span class='f24'>广告名称 </span> <input  class='w300 h52 f30 ml10' ng-model="billboardName">
+    </div>
+    <div class='mr41 mt20'>
+        <span class='f24'>持续时间 </span> <input class='w300 h52 f30 ml10'ng-model="time" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" style="outline:none;">
+    </div>
+    <div class='df wrap mr41 mt20 '   >
+        <div class='f24'>广告图片</div>
+         <div class="w300 h140 center-box bcf3f ml20 cp" id="bannerimg">
+        <img src="./images/configManage/peizhiguanli_tianjai_ico.png" class='addimg' alt="" id="bannerimg">
+         </div>
+    </div>
+     <div  id='oodimg'>
+         <img class="w300 h140 center-box bcf3f ml20 cp"  src="{{banUrl}}">
+        </div>
+        <!-- 跳转方式 -->
+        <!-- <div class="ly_splash_skip mt15">
+                <div class="gotourl">
+                    <input type="radio" value="lj" name="gotowhere" id="gotourl" ng-model="goType"><label for="gotourl">跳转链接</label> 
+                    <input type="text" ng-model="linkUrl">
+                </div> 
+                <select class="h25 mr10" ng-model="linkType">
+                    <option value="1"  selected>内嵌</option>
+                    <option value="2">外置</option>
+                </select> 
+                <input type="radio" value="jh" name="gotowhere" id="gotopage" ng-model="goType"><label for="gotopage">跳转话题聚合页：</label>
+                <div class="toppicpage">
+                  
+                    <select name="tag" ng-model="tagId">
+                        <option value="">{{tagId}}</option>
+                        <option value="{{item.value}}" ng-repeat="item in startupTopicList">{{item.name}}</option>
+                    </select>
+                </div>
+            </div> -->
+            <div class="mr230 mt20">
+                <!-- <div class="gotourl"> -->
+                    <input type="radio" value="lj" name="gotowhere" id="gotourl" ng-model="goType"><label for="gotourl" class="f14">跳转链接</label> 
+                    <input class="h34 w180" type="text" ng-model="linkUrl">
+                <!-- </div>  -->
+                <select class="h34 mr10" ng-model="linkType">
+                    <option value="1">内嵌</option>
+                    <option value="2">外置</option>
+                </select> 
+                <input type="radio" value="jh" name="gotowhere" id="gotopage" ng-model="goType" class="gotojh"><label for="gotopage" class="f14">跳转话题聚合页：</label>
+                <!-- <div class="toppicpage"> -->
+                    <!-- <input type="text" ng-model="tagId"> -->
+                    <!-- <ul ng-repeat="item in startupTopicList">
+                        <li>{{item.name}}</li>
+                    </ul> -->
+                    <!-- <select name="tag" ng-model="tagId" class="h34 w180">
+                        <option value="">--请选择话题--</option>
+                        <option value="{{item.value}}" ng-repeat="item in startupTopicList">{{item.name}}</option>
+                    </select> -->
+                    <select data-placeholder='请选择话题' name="tag" ng-model="tagId" class="h34 w180 ly_chosenTopic"  ng-click="ss()">
+                        <option value=""></option>
+                        <option value="{{item.value}}" ng-repeat="item in startupTopicList">{{item.name}}</option>
+                    </select>
+                <!-- </div> -->
+            </div>   
+            <!-- 启用时间 -->
+            <!-- <div class='ly_start_time'>
+                <span class='f24 w180 di' ng-click="ly_test()">启动页启用时间 </span> 
+                <input type="text" ng-model="startTime"> --
+                <input type="text" ng-model="endTime">
+            </div> -->
+            <div class='mt20 mr41'>
+                <span class='f18 w180 di' ng-click="ly_test()">启动页启用时间 </span> 
+                <!-- <input  class='w300 h52 f30 ml10' ng-model="time" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" style='outline:none;'> -->
+                <input type="text" ng-model="startTime" id="ly_start_time" class="w120 f14 form-control ng-pristine ng-untouched ng-valid ng-empty" onclick="WdatePicker({onpicking: function (dp) {if (dp.cal.getDateStr() != dp.cal.getNewDateStr()) { funcStart(dp.cal.getNewDateStr())}},readOnly:true,maxDate:'#F{$dp.$D(\'ly_end_time\',{d: 0})}'});"> --
+                <input type="text" ng-model="endTime" id="ly_end_time" class="w120 f14 form-control ng-pristine ng-untouched ng-valid ng-empty"  onclick="WdatePicker({onpicking: function (dp) {if (dp.cal.getDateStr() != dp.cal.getNewDateStr()) { funcEnd(dp.cal.getNewDateStr())}},readOnly:true, minDate:'#F{$dp.$D(\'ly_start_time\',{d: 0})}'});">
+            </div>
+    <div class="center-box mt100">
+        <button class="h34 f16 w70 br5 g-btn" ng-click="close_modal()">取消</button>
+        <button id='btn1' class="h34 f16 w70 br5 c-btn bcc cf ml30" ng-click="abc(id,url,billboardName,time,startTime,endTime,linkUrl,linkType,tagId)">保存</button>
+    </div>
+</div>

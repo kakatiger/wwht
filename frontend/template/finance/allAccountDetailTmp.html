@@ -1,0 +1,173 @@
+<div class="finance-modal-value-info">
+    <div class="close" ng-click="close_modal()">
+        <img src="./images/log/jubaoguanli_close.png" alt="">
+    </div>
+    <div class="table-nav center-b-box h40 mt20">
+         <span ng-click="a = 1" ng-show="type == 'apply'" ng-class="{'active-b':a==1}">提现申请</span>
+         <span ng-click="detail();a=2" ng-class="{'active-b':a==2}">账户明细</span>
+         <span ng-click="recharge();a=3" ng-class="{'active-b':a==3}">充值记录</span>
+         <span ng-click="old();a=4" ng-class="{'active-b':a==4}">提现记录</span>
+    </div>
+
+    <!-- //提现申请 -->
+    <div class="withdraw-msg" ng-show="type == 'apply' && a == 1">
+        <div class="w400">
+            <span>申请时间:</span>
+            <span>{{withdrawData.applyTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+        </div>
+        <div class="w290">
+            <span>账户余额:</span>
+            <span>{{withdrawData.balance}}</span>
+        </div>
+        <div>
+            <span>申请提现金额:</span>
+            <span>{{withdrawData.money}}</span>
+        </div>
+        <div ng-show="type == 'allAccount'">
+            <span>审批状态:</span>
+            <span ng-show="withdrawData.status == 'processing'">审核中</span>
+            <span ng-show="withdrawData.status == 'unpaid'">未支付</span>
+            <span ng-show="withdrawData.status == 'success'">审核成功</span>
+            <span ng-show="withdrawData.status == 'fail'">审核失败（{{withdrawData.remarks}}）</span>
+            <span ng-show="withdrawData.status == 'refusal_pay'">拒绝支付（{{withdrawData.remarks}}）</span>
+        </div>
+        <div ng-show="type == 'apply'">
+            <div class="putIn-box" ng-show="putIn">
+                <textarea class="form-control" placeholder="请输入拒绝理由…" ng-model="reason"></textarea>
+                <div class="center-box" >
+                    <button class="bt w120 h36 f18 mr100 bccf" ng-click="putIn = false">取消</button>
+                    <button class="bt w120 h36 f18 bcf84" ng-click="noPassCtrl(reason)">确定</button>
+                </div>
+            </div>
+            <div class="center-b-box" ng-show="!putIn">
+                <button class="bt w120 h36 f18 mr100" ng-click="passCtrl()">同意申请</button>
+                <button class="bt w120 h36 f18 bcf84" ng-click="putIn = true">拒绝申请</button>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- //账户明细 -->
+    <div ng-show="a == 2">
+        <table class="tc w100_">
+            <thead>
+                <tr class="bcf8f">
+                    <th>时间</th>
+                    <th>类型</th>
+                    <th>金额</th>
+                    <th>项目</th>
+                    <th>账户余额</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bceef" ng-repeat="de in detailData">
+                    <td class="w100">{{de.time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                    <td class="w80">{{de.type}}</td>
+                    <td>{{de.money}}</td>
+                    <td>{{de.object}}</td>
+                    <td>{{de.balance}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="madel-paginations center-end f14">
+            <ul uib-pagination rotate="false" total-items="detailTotal" next-text=">" previous-text="<" ng-model="page" max-size="5"  items-per-page="10" ng-change="withdrawPageChanged(page)" class="pagination-sm" ></ul>
+            <div class="center-b-box w250 ml20">
+                <div>共{{detailTotal / 10}}页</div>
+                <div>
+                    <span>到</span>
+                    <input type="text" class="form-control w50 p0" ng-model="withdrawPageNum">
+                    <span>页</span>
+                </div>
+                <button class="bt w60 h36 f14" ng-click="withdrawJumpPage(withdrawPageNum)">确定</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- //充值记录 -->
+    <div class="top-up-msg mt18" ng-show="a == 3">
+        <div class=" center-box">
+            <div class="head-box">
+                <span>充值总额</span>
+                <span>{{rechargeData.totalRecharge}}</span>
+            </div>
+        </div>
+        <div class="center-b-box mt18">
+            <div class="head-box">
+                <span>IOS</span>
+                <span>{{rechargeData.iosRecharge}}</span>
+            </div>
+            <div class="head-box">
+                <span>Android</span>
+                <span>{{rechargeData.androidRecharge}}</span>
+            </div>
+        </div>
+         <table class="tc w100_ mt10">
+            <thead>
+                <tr class="bcf8f">
+                    <th>时间</th>
+                    <th>充值途径</th>
+                    <th>充值金额</th>
+                    <th>账户余额</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bceef" ng-repeat="key in rechargeListData">
+                    <td>{{key.time | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                    <td>{{key.type}}</td>
+                    <td>{{key.money}}</td>
+                    <td>{{key.restMoney}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="madel-paginations center-end f14">
+            <ul uib-pagination rotate="false" total-items="rechargeTotal" next-text=">" previous-text="<" ng-model="page" max-size="5"  items-per-page="7" ng-change="rechargeChange(page)" class="pagination-sm" ></ul>
+            <div class="center-b-box w250 ml20">
+                <div>共{{rechargeTotal / 7}}页</div>
+                <div>
+                    <span>到</span>
+                    <input type="text" class="form-control w50 p0" ng-model="rechargePageNum">
+                    <span>页</span>
+                </div>
+                <button class="bt w60 h36 f14" ng-click="rechargeJumpPage(rechargePageNum)">确定</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- //提现记录 -->
+    <div ng-show="a == 4">
+        <div class="center-box mt18">
+            <div class="head-box">
+                <span>提现总额</span>
+                <span>{{oldData.count}}</span>
+            </div>
+        </div>
+        <div class="center-around bcf8f h40 f18 mt20">
+            <span>时间</span>
+            <span>提现金额</span>
+            <span>账户原有金额</span>
+            <span>账户余额</span>
+        </div>
+        <div ng-repeat="key in oldListData">
+            <div class="center-around bceef h60 f16">
+                <span>{{key.time | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                <span>{{key.money}}</span>
+                <span>{{key.originalBalance}}</span>
+                <span>{{key.restMoney}}</span>
+            </div>
+            <hr>
+        </div>
+        <div class="madel-paginations center-end f14">
+            <ul uib-pagination rotate="false" total-items="oldListTotal" next-text=">" previous-text="<" ng-model="page" max-size="5"  items-per-page="7" ng-change="oldPageChange(page)" class="pagination-sm" ></ul>
+            <div class="center-b-box w250 ml20">
+                <div>共{{oldListTotal / 7}}页</div>
+                <div>
+                    <span>到</span>
+                    <input type="text" class="form-control w50 p0" ng-model="oldPageNum">
+                    <span>页</span>
+                </div>
+                <button class="bt w60 h36 f14" ng-click="oldJumpPage(pageNum)">确定</button>
+            </div>
+        </div>
+    </div>
+    
+</div>

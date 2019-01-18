@@ -1,0 +1,69 @@
+<div class='vestManage'>
+	<div class='w1582'>
+<div class='between mt30'>
+    <div>
+      <h3>公告管理</h3>
+
+    </div>
+    <div class='ml100 center-end'>
+             <button class="h34 f16 w100 br5 c-btn bcc cf  mr56"ng-click='aa()' >新增</button>     
+    </div>
+  </div>
+  <div class='boder_h mt10'></div>	
+        <div class='mt30'>
+             <table class="w1582 mt10">
+                <tr class="h50 bcf">
+                    <th class="w120 tc"><span>公告标题</span></th>
+                    <th class="w120 tc "><span>开始时间</span></th>
+                    <th class="w120 tc"><span>结束时间</span></th>
+                    <th class="w120 tc"><span>推送间隔</span></th>
+                    <th class="w120 tc"><span>优先级</span></th>
+                    <th class="w120 tc"><span>状态</span></th>
+                    <th class="w204 tc"><span>操作</span></th>
+                </tr>
+                <tr class="f18 h92" ng-repeat="fic in noticeList" >
+                    <!-- <td class='tc'><img class='not_img' src="{{fic.content}}"></td> -->
+                    <td class='tc'>{{fic.name}}</td>
+                    <td class='tc'>{{fic.startTime}}</td>
+                    <td class='tc'>{{fic.endTime}}</td>
+                    <td class='tc'>{{fic.intervaltime}}{{fic.unit}}</td>
+                    <td class='tc'>{{fic.type}}级</td>
+                    <td class='tc'>
+                      <span ng-if='fic.state==0'>开启</span>
+                      <span ng-if='fic.state==1'>暂停</span>
+                    </td>
+                    <td class='tc'>
+                          <div class='df wrap'>
+                             <span class="bt w72 h36 f14 mro lh2 fw200 " ng-click=" bannerUpd(fic.id,i='0');"  ng-if="fic.state==1">开启</span>
+                             <span class="bt w72 h36 f14 mro lh2 fw200 " ng-click=" bannerUpd(fic.id
+                             ,i='1');" ng-if="fic.state==0">暂停</span>
+                             <span class="bt w72 h36 f14 mro  lh2 fw200 " ng-click='cc(fic.id,fic.name,fic.content,fic.unit,fic.time,fic.type,fic.intervaltime,fic.url,fic.startTime,fic.endTime)'>编辑</span>
+                              <span class="bt w72 h36 f14 mro lh2 fw200 "ng-click="dele(fic.id)">删除</span>
+                              
+                        </div>
+                    </td>
+            </table>
+        </div>
+	 
+            <div class="center-end">
+                <ul uib-pagination rotate="false" total-items="pages" next-text=">" previous-text="<" ng-model="pageNum" max-size="5"  items-per-page="10" ng-change="pageChanged(pageNum)" class="pagination-sm" ></ul>
+              <!--   <div class="center-b-box w250 ml20">
+                    <div>共{{fictitious.pages }}页</div>
+                    <div>
+                        <span>到</span>
+                        <input type="text" class="form-control w50 p0" ng-model="pageNum">
+                        <span>页</span>
+                    </div>
+                    <button class="bt w60 h36 f14" ng-click="jumpPage(pageNum)">确定</button>
+                </div> -->
+            </div>
+</div>  
+</div>
+<div id="js-imgview-mask" class="imgview-mask" style="display: none;" ng-click="closePic()"><!--黑盒子 --></div>  
+<div id="js-imgview" class="show-img"><!--显示放大的图片  -->
+    <div class="w100_ h100_ p20 center-box">
+        <img id="bigimage">  
+        <a ng-click="closePic()"></a>
+    </div>
+</div>
+

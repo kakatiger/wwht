@@ -1,0 +1,41 @@
+<div class="adv center-box column">
+     <div class='between mt20'>
+        <div>
+          <h3>发布图片</h3>
+        </div>
+        <div class='ml700 '>
+                 <span ng-click="close_modal()" class="glyphicon glyphicon-remove f30 cp" style="color: rgb(5, 0, 0);"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> </font></font></span>
+         </div>
+    </div>
+    <div class='mt20 ml20 df wrap'>
+    <div id="sun_img"  ></div>
+
+    <div id="pickfiles" class='ml20 mt20'><span   class="glyphicon glyphicon-plus-sign f120 " style="color: rgb(1, 0, 0);"> </span></div>
+  </div>
+    <div class='mr520 mt20'>
+        <span class='f24 '>添加标签</span>
+         <select  id="tag" class="form-control f16 p0 w154 ml10"   ng-model="tags"   >   
+                        <option ng-repeat="tag in ficTag" value='{{tag.value}}'>{{tag.name}}</option>
+                       </select>
+    </div>
+    <div class="df wrap mt30 w790 ">
+        <div class='df wrap mt15'>
+                <span class=" f24">上传录音</span>
+                <input type="text" class="form-control br30 h34 w210 ml10" ng-model="data.resourceName">
+                <div id="addMusic">
+                    <img src="./images/configManage/peizhiguanli_wenjian_ico.png"  class="w20 cp" alt="">
+                </div>
+        </div>
+        
+         <div class='ml30'><audio id='advAudio' controls style='display:none'></audio></div> 
+    </div>
+    <div class='df wrap ml50 '>
+        <div class='f24 mt50 '>文章</div>
+         <textarea class='w720 h300 mt50 ml70' type="text"ng-model="names" onkeyup="this.value=this.value.substring(0, 500)"
+    style="resize:none; "placeholder="最多可输入500字"></textarea>
+    </div>
+    <div class="center-box mt30">
+        <button class="h34 f16 w143 br5 g-btn" ng-click="close_modal()">取消</button>
+        <button id='btn1' class="h34 f16 w143 br5 c-btn bcc cf ml30" ng-click="poinTitle(tag,names)">保存</button>
+    </div>
+</div>

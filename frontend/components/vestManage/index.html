@@ -1,0 +1,59 @@
+<div class='vestManage'>
+	<div class='w1582'>
+<div class='between mt30'>
+    <div>
+      <h3>公告管理</h3>
+    </div>
+    <div class='ml100 center-end'>
+             <button class="h34 f16 w100 br5 c-btn bcc cf  mr56"ng-click='aa()' >创建</button>
+           
+    </div>
+  </div>
+  <div class='boder_h mt10'></div>	
+        <div class='mt30'>
+             <table class="w1582 mt10">
+                <tr class="h50 bcf">
+                    <th class="w120 tc"><span>马甲Id</span></th>
+                    <th class="w200 tc "><span>马甲昵称</span></th>
+                    <th class="w120 tc"><span>粉丝数</span></th>
+                    <th class="w120 tc"><span>动态数</span></th>
+                    <th class="w120 tc"><span>操作</span></th>
+                </tr>
+                <tr class="f18 h92" ng-repeat="fic in fictitiousList" >
+                    <td class='tc'>{{fic.userId}}</td>
+                    <td class='tc'>{{fic.nickname}}</td>
+                    <td class='tc'>{{fic.friendsTotal}}</td>
+                    <td class='tc'>{{fic.contentTotal}}</td>
+                    <td class='tc'>
+                          <div class='df wrap'>
+                             <span class="bt w72 h36 f14 mro  lh2 fw200 "ng-click="bb(fic.id,fic.avatar,fic.nickname)">编辑</span>
+                             <span class="bt w72 h36 f14 mro  lh2 fw200 " ng-click='cc({id: fic.userId})'>管理</span>
+                              <span class="bt w72 h36 f14 mro  lh2 fw200 "ng-click="reVideo(fic.userId)">发布视频</span>
+                               <span class="bt w72 h36 f14 mro  lh2 fw200 "ng-click='dd({id: fic.userId})'>发布图片</span>
+                        </div>
+                    </td>
+            </table>
+        </div>
+	 
+            <div class="center-end">
+                <ul uib-pagination rotate="false" total-items="pages" next-text=">" previous-text="<" ng-model="pageNum" max-size="5"  items-per-page="10" ng-change="pageChanged(pageNum)" class="pagination-sm" ></ul>
+              <!--   <div class="center-b-box w250 ml20">
+                    <div>共{{fictitious.pages }}页</div>
+                    <div>
+                        <span>到</span>
+                        <input type="text" class="form-control w50 p0" ng-model="pageNum">
+                        <span>页</span>
+                    </div>
+                    <button class="bt w60 h36 f14" ng-click="jumpPage(pageNum)">确定</button>
+                </div> -->
+            </div>
+</div>  
+</div>
+<div id="js-imgview-mask" class="imgview-mask" style="display: none;" ng-click="closePic()"><!--黑盒子 --></div>  
+<div id="js-imgview" class="show-img"><!--显示放大的图片  -->
+    <div class="w100_ h100_ p20 center-box">
+        <img id="bigimage">  
+        <a ng-click="closePic()"></a>
+    </div>
+</div>
+

@@ -1,0 +1,62 @@
+<div class='sunManage'>
+	<div>
+		<div class='head  mt20'>
+	 		<h2>审核处理</h2>
+	 		<div class='boder_h mt5'></div>
+ 		</div>
+ 		  <div class="amount-box h250 ">
+			    <div class=" bc2dd w280" >
+				    <div class='f28 cf mt50'>内容</div>
+				    <div class='f24 cf'>{{sunPending.content}}</div>
+				   <a ui-sref="contentManage"> <button class='  btn w100 h30 p0 mt10'>处理</button></a>
+			    </div>
+
+			    <div class=" c2dd w280">
+				     <div class='f28 cf mt50'>评论</div>
+				     <div class='f24 cf'>{{sunPending.comment}}</div>
+				    <a ui-sref="commentManage"> <button class='  btn w100 h30 p0 mt10'>处理</button></a>
+			    </div>
+
+			    <div class="bc919 w280">
+				     <div class='f28 cf mt50'>意见</div>
+				     <div class='f24 cf'>{{sunPending.avatarUser}}</div>
+				     <a ui-sref="opinionManage"><button class='  btn w100 h30 p0 mt10'>处理</button></a>
+			    </div>
+			    <div class="bcfc8 w280">
+				      <div class='f28 cf mt50'>头像</div>
+				      <div class='f24 cf'>{{sunPending.avatar}}</div>
+				      <a ui-sref="portraitManage"><button class='  btn w100 h30 p0 mt10'>处理</button></a>
+			    </div>
+	  		</div>
+	</div>
+	<div>
+		<div class='head mt20'>
+	 		<h2>已处理</h2>
+	 		<div class='boder_h mt5'></div>
+ 		</div>
+ 		<div class="amount-box h250 ">
+			    <div class="bc919  w280 " >
+				    <div class='f28 cf mt50'>封禁用户</div>
+				    <div class='f24 cf'>{{sunTreated.avatarUser}}</div>
+			    </div>
+
+			    <div class="bcfc8  w280">
+				     <div class='f28 cf mt50'>屏蔽内容</div>
+				     <div class='f24 cf'>{{sunTreated.content}}</div>
+			    </div>
+
+			    <div class="c2dd w280">
+				     <div class='f28 cf mt50'>屏蔽评论</div>
+				     <div class='f24 cf'>{{sunTreated.comment}}</div>
+			    </div>
+			    <div class=" bc2dd  w280">
+				      <div class='f28 cf mt50'>反馈意见</div>
+				      <div class='f24 cf'>{{sunTreated.idea}}</div>
+			    </div>
+	  		</div>
+	</div>	
+	<div class='wrap df mt50 '>
+		<div id="a_main" style="width: 600px;height:450px;"></div>
+		<div id="b_main" style="width: 600px;height:450px;"></div>
+	</div>
+</div>

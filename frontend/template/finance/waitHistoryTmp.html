@@ -1,0 +1,56 @@
+<div class="finance-modal-value-info">
+    <div class="close" ng-click="close_modal()">
+        <img src="./images/log/jubaoguanli_close.png" alt="">
+    </div>
+    <div class="center-box f26" >
+        <span ng-show="type == 'wait'">支付信息</span>
+        <span ng-show="type == 'history'">提现详情</span>
+    </div>
+    <div class="withdraw-msg">
+        <div class="w400">
+            <span>申请时间:</span>
+            <span>{{withdrawData.applyTime | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+        </div>
+        <div class="w290">
+            <span>账户余额:</span>
+            <span>{{withdrawData.balance}}</span>
+        </div>
+        <div>
+            <span>申请提现金额:</span>
+            <span>{{withdrawData.money}}</span>
+        </div>
+        <div ng-show="type == 'history'">
+            <span>审批状态:</span>
+            <span ng-show="withdrawData.status == 'processing'">审核中</span>
+            <span ng-show="withdrawData.status == 'unpaid'">未支付</span>
+            <span ng-show="withdrawData.status == 'success'">审核成功</span>
+            <span ng-show="withdrawData.status == 'fail'">审核失败 （{{withdrawData.remarks}}）</span>
+            <span ng-show="withdrawData.status == 'refusal_pay'">拒绝支付（{{withdrawData.remarks}}）</span>
+        </div>
+        
+        <div ng-show="type == 'wait'">
+            <span>支付宝账号:</span>
+            <span>{{withdrawData.alipayLogonid}}</span>
+        </div>
+        <div ng-show="type == 'wait'">
+            <span>用户名:</span>
+            <span>{{withdrawData.realName}}</span>
+        </div>
+        <div ng-show="type == 'wait'">
+            <div class="putIn-box" ng-show="putIn">
+                <textarea class="form-control" placeholder="请输入拒绝理由…" ng-model="reason"></textarea>
+                <div class="center-box" >
+                    <button class="bt w120 h36 f18 mr100 bccf" ng-click="putIn = false">取消</button>
+                    <button class="bt w120 h36 f18 bcf84" ng-click="noPass(reason)">确定</button>
+                </div>
+            </div>
+            <div class="center-b-box w500" ng-show="!putIn">
+                <button class="bt w120 h36 f18 bccf" ng-click="close_modal()">取消</button>
+                <button class="bt w120 h36 f18" ng-click="pass()">确认支付</button>
+                <button class="bt w120 h36 f18 bcf84" ng-click="putIn = true">拒绝支付</button>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>

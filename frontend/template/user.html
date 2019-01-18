@@ -1,0 +1,29 @@
+<div class='ml200 mt30'>
+	<span class='f30'>{{nickName}}</span>
+						<!-- <button class="bt w100 h36 f14 ml50"><a class="cf w100_" ng-click="add_user()" >添加</a></button> -->
+</div>
+<div>
+	 <table class=" mt10">
+              	
+                <thead>
+                <tr class="h50 bcf">
+                    <th class="w200 h44 tc"><span>角色名称</span></th>
+                    <th class="w200 h44 tc"><span>联系电话</span></th>
+                    <th class="w200 h44 tc"><span>操作</span></th>
+            	</thead>
+            	<tbody>
+            	<tr ng-repeat="user in userdata">
+                	
+                	<td class='tc h44'>{{user.realName}}</td>
+                	<td class='tc h44'>{{user.account}}</td>
+                	<td class='tc h44'><button class='bt w100 h36 f14 cf ' ng-click="opt_user(user.userId)">删除</button></td>
+                </tr>
+            </tbody>
+                
+              
+            </table>
+</div>
+<div class="center-box mt30">
+		        <button class="h44 f16 w100 br5 g-btn" ng-click="close_modal()">取消</button>
+		        <button id='btn1' class="h44 f16 w100 br5 c-btn bcc cf ml100" ng-click="add_user()">添加</button>
+   			 </div>

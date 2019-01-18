@@ -1,0 +1,67 @@
+<div>
+  <div class='df wrap'>
+         <div class='df wrap'>
+           <div class='bo'>未过滤 <span>({{cont.noFilter}})</span></div>
+           <div class='bo ml50'>已过滤 <span>({{cont.filter}})</span></div>
+         </div>
+         <div class="time-group wrap df mt20 ml350">
+                    <label class="control-label mb0 mt5 mr8  c85">开始时间</label>
+                    <div class="">
+                        <input class="form-control pl15 h40" id="start_date_d" ng-model="startdate" onClick="WdatePicker({onpicked: function(){$(this).trigger('change')},readOnly:true,maxDate:'#F{$dp.$D(\'over_date_d\',{d: -1})}'});" type="text" />
+                    </div>
+                    <span class=" c85 ml8 mr8 mt5">结束时间</span>
+                    <div class="">
+                        <input class="form-control h40" id="over_date_d" ng-model="overdate" onClick="WdatePicker({onpicked: function(){$(this).trigger('ng-change')},readOnly:true, minDate:'#F{$dp.$D(\'start_date_d\',{d: 1})}'});" type="text" />
+                    </div>
+               </div>
+          <div class='ml30 mt22'>
+                    <button class='btn cf bcc w164 h36 lh0' ng-click="pet()">确定</button>
+          </div> 
+    </div>
+    <div class='boder_h mt5'></div>
+
+    <div class='cont_content w1582 mt10' ng-repeat="fic in contList">
+        <div class='wrap df cont_head'>
+          <div class='mt10 ml30'>用户ID:{{fic.userId}}</div>
+          <div class='mt10 ml30'>粉丝数:{{fic.friendsTotal}}</div>
+          <div class='mt10 ml30'>动态:{{fic.contentTotal}}条</div>
+          <div class='mt10 ml530'>发布时间:{{fic.createTime}}</div>
+        </div>
+            <div class='df wrap mt30' >
+              <div class='cont_url df wrap' >
+                <div ng-repeat="v in fic.contentMedias">
+                  <div  ng-if="v.mediaType==3"><img  class='img2' src="{{v.url}}" ng-click="changePic($event)"></div>
+                  <video ng-if="v.mediaType==2" class='mt50'  src="{{v.url}}" width="320" height="240" controls>
+                      </video>
+                </div>
+                
+              </div>
+              <div class='cont_text'>
+                {{fic.content}}
+              </div>
+              <div class='cont_operation' >
+                    <div class='ml30 mt30' ng-repeat="v in fic.contentMedias"><audio ng-if="v.mediaType==1" src="{{v.url}}"  controls="controls"></audio></div>
+                    <div class='mt20 tc'><span class='cu' ng-click='cc({id: fic.id})'>评论 （{{fic.commentTotal}}）</span> <span>点赞（{{fic.supportTotal}}）</span></div>
+                    <div class='df wrap mt30'>
+                         <span class='ml30'><input type="radio"  ng-click='infos(state=1,fic.id,fic.userId,fic.content)' name="{{fic.id}}">封禁</span>
+                            <span class='ml30'><input type="radio"  ng-click='infos(state=3,fic.id,fic.userId,fic.content)' name="{{fic.id}}">屏蔽</span>
+                            <span class='ml30'><input type="radio" ng-click='infos(state=2,fic.id,fic.userId,fic.content)'name="{{fic.id}}">警告</span>
+                            <span class='ml30'><input type="radio" ng-click='infos(state=0,fic.id,fic.userId,fic.content)'name="{{fic.id}}" >不处理</span>           
+                     </div>
+              </div>
+            </div>
+    </div>
+      <div class="center-around">
+                <div class='ml530'>   
+                     <ul uib-pagination rotate="false" total-items="pages" next-text=">" previous-text="<" ng-model="pageNum" max-size="5"  items-per-page="10" ng-change="pageChanged(pageNum)" class="pagination-sm" ></ul>
+                </div>
+            <button class="h34 f16 w100 br5 c-btn bcc cf ml530 "ng-click="comm()" >提交</button>
+            </div> 
+    <div id="js-imgview-mask" class="imgview-mask" style="display: none;" ng-click="closePic()"><!--黑盒子 --></div>  
+    <div id="js-imgview" class="show-img"><!--显示放大的图片  -->
+    <div class="w100_ h100_ p20 center-box">
+        <img id="bigimage">  
+        <a ng-click="closePic()"></a>
+    </div>
+</div>
+</div>

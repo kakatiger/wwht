@@ -1,0 +1,93 @@
+<div class='checkManage'>
+    <div>
+      <h3>核查记录</h3>
+    </div>
+ <div class='boder_h mt10'></div>
+ <div class='check_head'>
+ 		<div class='df wrap'>
+ 				<div class='mt20 df wrap ml30'>
+ 						<div class=' mt5'>
+		          			<span>类型</span>
+		                       <select name="" class="form-control f16 p0 w164 ml10"   ng-model="potData.value"  ng-init="potData.value='1'"  > 
+		                        <option value='1'>内容</option>
+		                        <option value='2'>评论</option>
+		                       </select>
+		            	</div>
+		            	<div class='mt5 ml50'>
+		          			<span>操作人</span>
+		                       <select name="" class="form-control f16 p0 w164 ml10"   ng-model="potData.state"
+		                         > 
+		                       	<option  value=''>全部</option>
+		                        <option ng-repeat="tag in assign_list"  value='{{tag.userId}}'>{{tag.realName}}</option>
+		                       </select>
+		            	</div>
+		            	
+		       
+              	</div>
+ 				 <div class="time-group wrap df mt20 ml100">
+                    <label class="control-label mb0 mt5 mr8 ">开始时间</label>
+                    <div class="">
+                        <input class="form-control pl15 h40" id="start_date_gou" ng-model="startdate" onClick="WdatePicker({onpicked: function(){$(this).trigger('change')},readOnly:true,maxDate:'#F{$dp.$D(\'over_date_gou\',{d: -1})}'});" type="text" />
+                    </div>
+                    <span class="f16 c85 ml8 mr8 mt10">结束时间</span>
+                    <div class="">
+                        <input class="form-control h40" id="over_date_gou" ng-model="overdate" onClick="WdatePicker({onpicked: function(){$(this).trigger('ng-change')},readOnly:true, minDate:'#F{$dp.$D(\'start_date_gou\',{d: 1})}'});" type="text" />
+                    </div>
+           		 </div>
+           	
+              <div class='ml30 mt20'>
+		                      <button class='btn cf bcc w164 h36 lh0' ng-click="pot(potData)">确定</button>
+		      </div> 
+ 		</div>
+ </div>
+ <div>
+ 	  <table class="w1582 mt10">
+                <tr class="h50 bcf">
+                    <th class="w230 tc"><span>内容</span></th>
+                    <th class="w280 tc"><span>文字</span></th>
+                     <th class="w120 tc"><span>语音</span></th>
+                    <th class="w120 tc"><span>处理时间</span></th>
+                    <th class="w120 tc"><span>处理结果</span></th>
+                    <th class="w50 tc"><span>操作人</span></th>
+                </tr>
+                <tr class="f18 h92" ng-repeat="com in listUserReportForUse" >
+                   
+                    <td class='tc w280 h180' >
+                    
+                         <img class='cImg' ng-repeat="a in com.list"  ng-if="a.mediaType==3"  ng-click="changePic($event)" src="{{a.url}}">
+                          <video class='mt50' ng-repeat="a in com.list" ng-if="a.mediaType==2" src="{{a.url}}" width="220" height="160" controls>
+                
+                      
+                    </td>
+                     <td class='tc w230' >
+                      {{com.content}}
+                    </td>
+                    <td class='tc w120' >
+                      <div  ng-repeat="v in com.list">
+                        <audio class='music_con' ng-if="v.mediaType==1" src="{{v.url}}" controls="controls"></audio>
+                      </div>
+                    </td>
+                    <td class='tc'>{{com.createTime | date :"yyyy-MM-dd HH:mm"}}</td>
+                    <td class='tc'>
+                      <span ng-if='com.type == 0'>不处理</span>
+                      <span ng-if='com.type == 2'>屏蔽</span>
+                    </td>
+                    <td class='tc'>
+                         {{com.adminName}}
+                    </td>
+            </table>
+ </div>
+  <div class="center-around">
+                <div class='ml530'>   
+                     <ul uib-pagination rotate="false" total-items="pages" next-text=">" previous-text="<" ng-model="pageNum" max-size="5"  items-per-page="10" ng-change="pageChanged(pageNum)" class="pagination-sm" ></ul>
+                </div>
+                <div>共计:{{pageTotal}}条</div>
+           </div>
+</div>
+  <div id="js-imgview-mask" class="imgview-mask" style="display: none;" ng-click="closePic()"><!--黑盒子 --></div>  
+  <div id="js-imgview" class="show-img"><!--显示放大的图片  -->
+      <div class="w100_ h100_ p20 center-box">
+          <img id="bigimage">  
+          <a ng-click="closePic()"></a>
+      </div>
+  </div>

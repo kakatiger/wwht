@@ -1,0 +1,42 @@
+<div class='banManage'>
+	<div class='ban_head'><h3>意见反馈库</h3></div>
+	  <div class=''>
+             <table class="w1582 mt10">
+                <tr class="h50 bcf">
+                    <th class="w230 tc"><span>描述</span></th>
+                    <th class="w280 tc"><span>图片</span></th>
+                     <th class="w120 tc"><span>用户ID</span></th>
+                    <th class="w120 tc"><span>反馈时间</span></th>
+                    <th class="w120 tc"><span>类型</span></th>
+                    <th class="w230 tc"><span>处理</span></th>
+                </tr>
+                <tr class="f18 h92" ng-repeat="com in collect" >
+                    <td class='tc w230' >
+                    	{{com.ideaContent}}
+                    </td>
+                    <td class='tc w280' ><img class='oImg' ng-repeat="a in com.imgs"  ng-click="changePic($event)" src="{{a}}"></td>
+                    <td class='tc' ><a  ui-sref="userManage({id:com.userId})">{{com.userId}}</a></td>
+                    <td class='tc'>{{com.createTime | date :"yyyy-MM-dd HH:mm"}}</td>
+                    <td class='tc'>
+                      <span ng-if='com.ideaType == 1'>投诉</span>
+                      <span ng-if='com.ideaType == 2'>建议</span>
+                      <span ng-if='com.ideaType == 3'>优化</span>
+                    </td>
+                    <td class='tc'>
+                          <button class='btn cf bcc w164 h36 lh0' ng-click="pet(com.ideaId)">删除</button>
+                    </td>
+            </table>
+        </div>
+          <div class="center-around">
+                <div class='ml530'>   
+                     <ul uib-pagination rotate="false" total-items="pages" next-text=">" previous-text="<" ng-model="pageNum" max-size="5"  items-per-page="10" ng-change="pageChanged(pageNum)" class="pagination-sm" ></ul>
+                </div>
+           </div>
+    <div id="js-imgview-mask" class="imgview-mask" style="display: none;" ng-click="closePic()"><!--黑盒子 --></div>  
+	<div id="js-imgview" class="show-img"><!--显示放大的图片  -->
+	    <div class="w100_ h100_ p20 center-box">
+	        <img id="bigimage">  
+	        <a ng-click="closePic()"></a>
+	    </div>
+	</div>
+</div>	

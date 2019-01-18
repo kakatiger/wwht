@@ -1,0 +1,18 @@
+<div class="add-user center-box column">
+    <div class="center-box mt50">
+        <span class="w65 f16">姓名</span>
+        <input type="text" ng-model="formData.realName" required class="form-control br30 h34 w210 mr10">
+    </div>
+    <div class="center-box mt50">
+        <span class="w65 f16">手机</span>
+        <input type="number" ng-model="formData.phoneNo" required class="form-control br30 h34 w210 mr10" maxlength="11">
+    </div>
+    <div class="center-box mt50">
+        <span class="w65 f16">密码</span>
+        <input type="text" ng-model="formData.pwd" required class="form-control br30 h34 w210 mr10 ">
+    </div>
+    <div class="center-box mt50">
+        <button class="h34 f16 w70 br5 g-btn" ng-click="close_modal()">取消</button>
+        <button class="h34 f16 w70 br5 c-btn bcc cf ml30" ng-click="createUser(formData)">确认</button>
+    </div>
+</div>

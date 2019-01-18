@@ -1,0 +1,9 @@
+<div class="config-manage w1582">
+    <div class="center-b-box bcf cp">
+        <span class="center-box w394 h56 f20" ui-sref="operateManage.noticeManage" ui-sref-active="active-b" ng-repeat="navs in sideNave" ng-if="navs.name=='公告管理'">公告管理</span>
+        <span class="center-box w394 h56 f20" ng-repeat="navs in sideNave" ui-sref="operateManage.topicManage" ui-sref-active="active-b" ng-if="navs.name=='话题管理'">话题管理</span>
+        <span class="center-box w394 h56 f20" ng-repeat="navs in sideNave" ui-sref="operateManage.startupManage" ui-sref-active="active-b" ng-if="navs.name=='闪屏管理'">闪屏管理</span>
+        <span class="center-box w394 h56 f20" ng-repeat="navs in sideNave" ui-sref="operateManage.startManager" ui-sref-active="active-b" ng-if="navs.name=='启动管理'">启动页管理</span>
+    </div>
+    <div ui-view></div>
+</div>

@@ -1,0 +1,166 @@
+<div class='groupManage'>
+	
+	<div>
+		<div class='head  mt20'>
+	 		<h2>活跃情况</h2>
+	 		<div class='boder_h mt5'></div>
+ 		</div>
+	 	  <div class="amount-box h250 ">
+			    <div class=" bc2dd w280" >
+				    <div class='f28 cf mt50'>总下载量</div>
+				    <div class='f24 cf'>{{businessAll.download}}</div>
+			    </div>
+
+			    <div class=" c2dd w280">
+				     <div class='f28 cf mt50'>总注册用户</div>
+				     <div class='f24 cf'>{{businessAll.register}}</div>
+			    </div>
+
+			    <div class="bc919 w280">
+				     <div class='f28 cf mt50'>人均停留时长</div>
+				     <div class='f24 cf'>{{businessAll.remain}}</div>
+			    </div>
+			    <div class="bcfc8 w280">
+				      <div class='f28 cf mt50'>人均启动次数</div>
+				      <div class='f24 cf'>{{businessAll.start}}</div>
+			    </div>
+	  		</div>
+		  <div class='mt50 ml100'>
+		  		  <div id="g_main" style="width: 800px;height:450px;"></div>
+		  </div>
+	</div>
+	<!-- 标签运营数据 -->
+	<div>
+		<div class='head  mt20'>
+	 		<h2>标签运营数据</h2>
+	 		<div class='boder_h mt5'></div>
+ 		</div>
+ 		<div class='df wrap'>
+ 				 <div class="time-group wrap df mt20 ">
+                    <label class="control-label mb0 mt5 mr8 ">开始时间</label>
+                    <div class="">
+                        <input class="form-control pl15 h40" id="start_date_gou" ng-model="startdate" onClick="WdatePicker({onpicked: function(){$(this).trigger('change')},readOnly:true,maxDate:'#F{$dp.$D(\'over_date_gou\',{d: -1})}'});" type="text" />
+                    </div>
+                    <span class="f16 c85 ml8 mr8 mt10">结束时间</span>
+                    <div class="">
+                        <input class="form-control h40" id="over_date_gou" ng-model="overdate" onClick="WdatePicker({onpicked: function(){$(this).trigger('ng-change')},readOnly:true, minDate:'#F{$dp.$D(\'start_date_gou\',{d: 1})}'});" type="text" />
+                    </div>
+           		 </div>
+           		 <div class='mt20 df wrap ml30'>
+		            	<div class='mt5'>
+		          			<span>选择话题</span>
+		                       <select name="" class="form-control f16 p0 w120"   ng-model="potData.state"   > 
+		                        <option ng-repeat="tag in ficTag"  value='{{tag.value}}'>{{tag.name}}</option>
+		                       </select>
+		            	</div>
+		            	<div class='ml20 mt5'>
+		          			<span>选择数据</span>
+		                       <select name="" class="form-control f16 p0 w120"   ng-model="potData.value"   > 
+		                        <option value='1'>内容</option>
+		                        <option value='2'>评论</option>
+		                       </select>
+		            	</div>
+		            	<div class='ml30 mt5'>
+		                      <button class='btn cf bcc w164 h36 lh0' ng-click="pot(potData)">确定</button>
+		                  </div> 
+              </div>
+ 		</div>
+ 		<div class='df wrap'>
+ 			<div class='mt50 ml100'>
+		  		  <div id="z_main" style="width: 800px;height:450px;"></div>
+		  	</div>
+		  <div class='ml50 mt50'>
+		  		 <div class=" bc2dd w280 dd" >
+				    <div class='f28 cf mt50'>发布内容</div>
+				    <div class='f24 cf'>{{content}}</div>
+			    </div>
+
+			    <div class=" c2dd w280 dd mt30">
+				     <div class='f28 cf mt50'>评论总数</div>
+				     <div class='f24 cf'>{{comment}}</div>
+			    </div>
+
+			    <div class="bc919 w280 dd mt30">
+				     <div class='f28 cf mt50'>活跃度</div>
+				     <div class='f24 cf'>{{rate}}</div>
+			    </div>
+		  </div>
+ 		</div> 
+	</div>
+	<!-- 内容类型占比 -->
+	<div>
+		<div class='head  mt20'>
+	 		<h2>内容类型占比</h2>
+	 		<div class='boder_h mt5'></div>
+ 		</div>
+ 			<div class='df wrap'>
+ 			<div class='mt50 ml100'>
+		  		  <div id="o_main" style="width: 800px;height:450px;"></div>
+		  	</div>
+		  <div class='ml50 mt50'>
+		  		 <div class=" bc2dd w280 dd" >
+				    <div class='f28 cf mt50'>图片</div>
+				    <div class='f24 cf'>{{picture}}</div>
+			    </div>
+
+			    <div class=" c2dd w280 dd mt30">
+				     <div class='f28 cf mt50'>视频</div>
+				     <div class='f24 cf'>{{vidoe}}</div>
+			    </div>
+
+			    <div class="bc919 w280 dd mt30">
+				     <div class='f28 cf mt50'>录音</div>
+				     <div class='f24 cf'>{{vioce}}</div>
+			    </div>
+		  </div>
+ 		</div> 
+	</div>
+	<!-- 地图 -->
+	<div>
+		<div class='head  mt20'>
+	 		<h2>用户分布</h2>
+	 		<div class='boder_h mt5'></div>
+ 		</div>
+ 		<div class='df wrap'>
+ 				 <div class="time-group wrap df mt20 ">
+                    <label class="control-label mb0 mt5 mr8 ">开始时间</label>
+                    <div class="">
+                        <input class="form-control pl15 h40" id="start_date_d" ng-model="startdate" onClick="WdatePicker({onpicked: function(){$(this).trigger('change')},readOnly:true,maxDate:'#F{$dp.$D(\'over_date_d\',{d: -1})}'});" type="text" />
+                    </div>
+                    <span class="f16 c85 ml8 mr8 mt10">结束时间</span>
+                    <div class="">
+                        <input class="form-control h40" id="over_date_d" ng-model="overdate" onClick="WdatePicker({onpicked: function(){$(this).trigger('ng-change')},readOnly:true, minDate:'#F{$dp.$D(\'start_date_d\',{d: 1})}'});" type="text" />
+                    </div>
+           		 </div>
+           		 <div class='mt20 df wrap ml30'>
+		            	<div class='ml20 mt5'>
+		          			<span>选择数据</span>
+		                       <select  class="form-control f16 p0 w120"   ng-model="topData.value"   > 
+			                        <option value='1'>注册用户数</option>
+			                        <option value='2'>活跃用户数</option>
+		                       </select>
+		            	</div>
+		            	<div class='ml30 mt5'>
+		                      <button class='btn cf bcc w164 h36 lh0' ng-click="pet(topData)">确定</button>
+		                  </div> 
+              	</div>
+ 		</div>
+ 		<div class='df wrap'>
+ 			<div class='mt50 ml100'>
+		  		  <div id="d_main" style="width: 800px;height:450px;"></div>
+		  	</div>
+		  <div class='ml50 mt50 map'>
+		  		<ul class='df wrap mt5' ng-repeat="re in distribution">
+		  			<li>NO.{{$index + 1 }}</li>
+		  			<li class='ml10'>{{re.name}}</li>
+		  			<li class='ml10'>{{re.value}}</li>
+		  		</ul> 
+
+			    
+
+			    
+		  </div>
+ 		</div> 
+
+	</div>
+</div>

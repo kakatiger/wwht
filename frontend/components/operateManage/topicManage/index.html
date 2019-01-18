@@ -1,0 +1,57 @@
+<div class='w1582'>
+<div class='between mt30'>
+    <div>
+      <h3>内容推送</h3>
+    </div>
+    <div class='ml100 center-end'>
+             <button class="h34 f16 w100 br5 c-btn bcc cf  mr56"ng-click="setUP()" >设置</button>
+             <button class="h34 f16 w100 br5 c-btn bcc cf "ng-click="newTopic()" >新增</button>
+    </div>
+  </div>
+  <div class='boder_h mt10'></div>	
+        <div class='mt30'>
+             <table class="w1582 mt10">
+                <tr class="h50 bcf">
+                    <th class="w200 tc"><span>话题名称</span></th>
+                    <th class="w120 tc "><span>内容条数</span></th>
+                    <th class="w120 tc"><span>评论数</span></th>
+                    <th class="w120 tc"><span>标签排序</span></th>
+                    <th class="w200 tc"><span>推送剩余总数</span></th>
+                    <th class="w120 tc"><span>操作</span></th>
+                </tr>
+                <tr class="f18 h92" ng-repeat="top in topList" >
+                    <td class='tc'>{{top.name}}</td>
+                    <td class='tc'>{{top.contentUseCount}}</td>
+                    <td class='tc'>{{top.commentUseCount}}</td>
+                    <td class='tc'>{{top.showOrder}}</td>
+                    <td class='tc'>{{top.surplus}}</td>
+                    <td class='tc'>
+                          <div class='df wrap'>
+                             <span class="bt w72 h36 f14 mro  lh2 fw200 "ng-click="exit_topic(top.id,top.name,top.showOrder)">修改</span>
+                             <span class="bt w72 h36 f14 mro  lh2 fw200 " ng-click= "topSet(top.id,i='置顶');" ng-if="top.isRecommendTag  ==0">置顶</span>
+                              <span class="bt w72 h36 f14 mro  lh2 fw200 " ng-click= "topSet(top.id,i='取消置顶');" ng-if="top.isRecommendTag  ==1">取消置顶</span>
+                        </div>
+                    </td>
+            </table>
+        </div>
+	 
+            <div class="center-end">
+                <ul uib-pagination rotate="false" total-items="pages" next-text=">" previous-text="<" ng-model="pageNum" max-size="5"  items-per-page="10" ng-change="pageChanged(pageNum)" class="pagination-sm" ></ul>
+                <div class="center-b-box w250 ml20">
+                    <div>共{{topic.pages }}页</div>
+                    <div>
+                        <span>到</span>
+                        <input type="text" class="form-control w50 p0" ng-model="pageNum">
+                        <span>页</span>
+                    </div>
+                    <button class="bt w60 h36 f14" ng-click="jumpPage(pageNum)">确定</button>
+                </div>
+            </div>
+</div>
+<div id="js-imgview-mask" class="imgview-mask" style="display: none;" ng-click="closePic()"><!--黑盒子 --></div>  
+<div id="js-imgview" class="show-img"><!--显示放大的图片  -->
+    <div class="w100_ h100_ p20 center-box">
+        <img id="bigimage">  
+        <a ng-click="closePic()"></a>
+    </div>
+</div>

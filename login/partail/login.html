@@ -1,0 +1,33 @@
+<div class="warp">
+    <div class="login-main">
+        <div class="login-way w100_">
+            <ul>
+                <li class="account-login f18 fcolor pointer">账号登录
+                </li>
+            </ul>
+        </div>
+        <form class="login-form pb30" ng-submit="signInSave(formData,checked)" >
+            <div class="row username pb20">
+                <input autofocus type="text" class="form-control o0 h38" placeholder="电话" ng-model="formData.phoneNo">
+            </div>
+            <div class="row password pb10">
+                <input type="password" class="form-control o0 h38" placeholder="密码" ng-model="formData.passWord">
+            </div>
+            <!--<div class="longin-auto pb10">
+                <label class="fcolor">
+                    <input type="checkbox" ng-model="checked" class="login-checkbox"><span class="ml10"></span>记住密码
+                </label>
+            </div>-->
+            <div class="login-group mt20">
+                <button class="button-login form-control o0 wsp" type="submit">登 录</button>
+            </div>
+        </form>
+        <!--<div class="login-help tc mt20">
+            <a class="forgot">忘记密码</a>
+            <span class="split fcolor w40 inb o3">|</span>
+            <a class="signup">免费注册</a>
+        </div>
+        <div class="weixin-box" ng-show='loginWay===2'></div>-->
+    </div>
+    <div class="login-ft"></div>
+</div>

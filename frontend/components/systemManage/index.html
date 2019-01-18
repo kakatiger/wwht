@@ -1,0 +1,26 @@
+
+ <div class='systemManage w1582'>
+ 	<div class='between'>
+	    <div>
+	      <h2>角色管理</h2>
+	    </div>
+	    <div class='ml100 '>
+	                  <button class="h44 f16 w160 br5 c-btn bcc cf " ng-click="sysIncrease()" >新增角色</button>
+	    </div>
+  </div>
+  <table class="w1582 mt10">
+                <tr class="h50 bcf">
+                    <th class="tc w920">角色名称<span></span></th>
+                    <th class="tc w662">操作<span></span></th>
+                </tr>
+                <tr class="f18 h92" ng-repeat="sys in assignList">
+                    <td class='tc'>{{sys.name}}</td>
+                   	<td class='tc'>
+                   		<button class="bt w160 h44 f14 "><a class="cf w100_" ng-click="sysEdit(sys.id,sys.name)" >编辑权限</a></button>
+                      <button class="bt w160 h44 f14 ml50" ng-click="user(sys.id,sys.name)">用户管理</button>
+                   		<!-- <button class="bt w160 h44 f14 ml50" ng-click="add_user(sys.id)">新增用户</button> -->
+                   	</td>
+                    
+                </tr>
+            </table>
+ </div>

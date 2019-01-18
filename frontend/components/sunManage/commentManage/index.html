@@ -1,0 +1,70 @@
+<div class='commentManage'>
+	<div class="config-manage w1582">
+    <div class="center-b-box bcf cp">
+        <span class="center-box w394 h56 f20" ui-sref="contentManage" ui-sref-active="active-b" >内容待处理({{sunPending.content}})</span>
+        <span class="center-box w394 h56 f20" ui-sref="commentManage" ui-sref-active="active-b">评论待处理({{sunPending.comment}})</span>
+        <span class="center-box w394 h56 f20"  ui-sref="opinionManage" ui-sref-active="active-b" >建议待处理({{sunPending.avatarUser}})</span>
+        <span class="center-box w394 h56 f20"  ui-sref="portraitManage" ui-sref-active="active-b" >头像待处理({{sunPending.avatar}})</span>
+    </div>
+	</div>
+	    <div class='mt30'>
+             <table class="w1582 mt10">
+                <tr class="h50 bcf">
+                    <th class="w230 tc"><span>举报图像</span></th>
+                     <th class="w230 tc"><span>举报内容</span></th>
+                    <th class="w120 tc "><span>语音</span></th>
+                    <th class="w120 tc"><span>举报时间</span></th>
+                    <th class="w120 tc"><span>用户ID</span></th>
+                    <th class="w120 tc"><span>举报类型</span></th>
+                    <th class="w230 tc"><span>操作</span></th>
+                </tr>
+                <tr class="f18 h92" ng-repeat="com in commentExamineList" >
+                    <td class='tc ' >
+                    	<div ng-repeat="cen in com.list">
+                    		<div ng-if='cen.mediaType==3' ><img class='cenimg' ng-click="changePic($event)" src="{{cen.url}}"></div>
+                    		<div ng-if='cen.mediaType==2'><video  class='mt50'  src="{{cen.url}}" width="220" height="120" controls></div>
+                    	</div>
+                    </td>
+                    <td class='tc'>{{com.content}}</td>
+                    <td class='tc'>
+                    	<div  ng-repeat="v in com.list">
+                    		<audio class='music_con' ng-if="v.mediaType==1" src="{{v.url}}" controls="controls"></audio>
+                    	</div>
+                    </td>
+                    <td class='tc'>{{com.createTime}}</td>
+                    <td class='tc' ><a  ui-sref="userManage({id:com.userId})">{{com.userId}}</a></td>
+                    <td class='tc'>{{com.type}}</td>
+                    <td class='tc'>
+                          <div class='df wrap' >
+                            <span class='ml10'><input type="radio"  ng-click='infos(state=1,com.id,com.commentId,com.userId,com.contentId)' name="{{com.id}}">屏蔽</span>
+                           	<span class='ml20'><input type="radio" ng-click='infos(state=2,com.id,com.commentId,com.userId,com.contentId)'name="{{com.id}}">警告</span>
+       					   	<span class='ml20'><input type="radio" ng-click='infos(state=3,com.id,com.commentId,com.userId,com.contentId)'name="{{com.id}}">不处理</span>
+           				   
+                        </div>
+                    </td>
+            </table>
+        </div>
+          <div class="center-around">
+                <div class='ml530'>   
+                     <ul uib-pagination rotate="false" total-items="pages" next-text=">" previous-text="<" ng-model="pageNum" max-size="5"  items-per-page="10" ng-change="pageChanged(pageNum)" class="pagination-sm" ></ul>
+                </div>
+               
+              <!--   <div class="center-b-box w250 ml20">
+                    <div>共{{fictitious.pages }}页</div>
+                    <div>
+                        <span>到</span>
+                        <input type="text" class="form-control w50 p0" ng-model="pageNum">
+                        <span>页</span>
+                    </div>
+                    <button class="bt w60 h36 f14" ng-click="jumpPage(pageNum)">确定</button>
+                </div> -->
+            <button class="h34 f16 w100 br5 c-btn bcc cf ml530 "ng-click="comm(topData)" >提交</button>
+            </div>
+</div>
+<div id="js-imgview-mask" class="imgview-mask" style="display: none;" ng-click="closePic()"><!--黑盒子 --></div>  
+<div id="js-imgview" class="show-img"><!--显示放大的图片  -->
+    <div class="w100_ h100_ p20 center-box">
+        <img id="bigimage">  
+        <a ng-click="closePic()"></a>
+    </div>
+</div>

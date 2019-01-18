@@ -1,0 +1,30 @@
+<div class='userManage'>
+<div class='userManage_conter df wrap'>
+	<div class='userManage_conter_text '>
+		<div class='df wrap userManage_conter_text_img '>
+			<div class='ml65 mt100'><img class='sun_info_img' src="{{commentUser.photo}}"></div>
+			<div class='ml65 mt100'>
+				<p><span>{{commentUser.nickname}}</span> <span class='ml50'>用户等级:{{commentUser.level}}</span></p>
+				<p class='mt20'>
+					<span>用户ID：{{commentUser.userId}}</span>
+					<span class='ml30'>动态 :{{commentUser.contentTotal}}条</span>
+					<span class='ml30'>粉丝 {{commentUser.friendsTotal}}</span>
+				</p>
+			</div>
+		</div>
+			
+			<div class='userManage_conter_text_cont'>
+				  <p class=' ml100 pt50'><span >处罚记录</span><span class=' ml30'>被屏蔽:</span> <span>{{commentUser.seal}}</span></p>
+					
+				 
+			</div>
+	</div>
+	<div class='userManage_conter_cz'>
+		<div class='tc userManage_conter_cz_text'>处理</div>
+		<div class='df wrap ml65'>
+			<div class="bt w72 h36 f14  ml30  lh2  " ng-click='col(commentUser.userId)'>封禁</div>
+			<div class="bt w72 h36 f14  ml30 lh2  " ng-click='shie(commentUser.userId)'>屏蔽</div>
+		</div>
+	</div>
+</div>
+</div>

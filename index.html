@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- <base href="/base/url" /> -->
+    <meta charset="UTF-8">
+    <meta name='viewport' , content='width=device-width,initial-scale=1,minimum-scale=1, maximum-scale=1'>
+    <title>音之后台管理系统</title>
+    <link rel="stylesheet" href="./dist-src/css/libs/video-js.min.css">
+    <link rel="stylesheet" href="./dist-src/css/libs/bootstrap.css">
+    <link rel="stylesheet" href="./dist-src/css/libs/toastr.min.css">
+    <link rel="stylesheet" href="./dist-src/css/index.css">
+    <link type="image/x-icon" rel="shortcut icon" href="./favicon.ico" />
+    
+    <!-- <base href="/"> -->
+</head>
+
+<body ng-app="wwApp">
+	<header ng-controller="headCtrl">
+		<div class="center-b-box">
+			<div class="ww-logo ml20 center-v" >
+    			<div class="ww-logo-img w60 h60">
+    				<img src="./images/log/logo.png" class="w60 h60">
+    			</div>
+    			<h1 class="ml20 title-nowrap">音之后台管理系统</h1>
+    		</div>
+            <div class="login-log mr20">
+                <img class="cp" src="./images/log/gushiguanli_tuichu_normal.png" ng-click="esc()">
+            </div>
+		</div>
+    </header>
+
+    <div ui-view="loginView">
+        <div class="sidebar">
+            <div class="main-list" ng-controller="navCtrl">
+            	<div>
+            		<ul>  
+                          <li ng-repeat="navItem in navItems"><a  ui-sref="{{navItem.url}}" ui-sref-active="active">{{navItem.name}}</a></li> 
+					</ul>
+            	</div>
+            
+                <div class="user-info">
+	               	<div class="center-box">
+	               		<div ng-if="realCover = null"></div>
+	               		<div class="user-img" style="background-image: url('{{realCover || './images/log/gushiguanli_Login_hover.png'}}');">
+	               		</div>
+	               		<div class="nike-name ml10">
+	               			{{realName || '昵称'}}
+	               		</div>
+	               	</div>
+                </div>
+            </div>
+        </div>
+        <div class="app-container">
+            
+            <div class="app-content">
+                <div ui-view></div>
+            </div>
+        </div>
+    </div>
+    
+   
+    <script type="text/javascript" src="./dist-src/vendor.bundle.js"></script>
+    <script type="text/javascript" src="./dist-src/app.bundle.js"></script>
+    <script type="text/javascript" src="./libs/DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="./libs/Region.js"></script>
+ 
+
+</body>
+
+</html>

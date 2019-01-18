@@ -1,0 +1,67 @@
+s<div class=" ">
+   <div class=' mt30'>
+    <div>
+      <h3 class='tc'>修改马甲</h3>
+    </div>
+   
+  </div>
+  <div class='boder_h mt10'></div>
+  <div id ='vestWrite_content'>
+         <div class='df wrap mr41 mt50 w790'>
+            <div class='f24 '>上传图片</div>
+            <div class="w300 h140 center-box bcf3f ml10 cp" id="bannerimg">
+            <img src="./images/configManage/peizhiguanli_tianjai_ico.png" alt="" id="bannerimg">
+            </div>
+            <div>
+                <img class='ext_img' src="{{newstr}}">
+            </div>
+        </div>
+
+         <div class='ml38 mt20'>
+        <span class='f24'>昵称 </span> <input  class='w300 h52 f30 ml10' ng-model="nameCk"placeholder="{{name}}" onkeyup="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,''),this.value=this.value.substring(0, 20)" onpaste="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" oncontextmenu = "value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" style=“outline:none;”>
+        </div>
+
+         <div class='birthday mt30 df wrap ml38'>
+            <div class='f24'>年龄 </div>
+                <div class='ml10'>
+<form name="reg_testdate">
+    <select name="YYYY" onChange="YYYYDD(this.value)" id='year'>
+        <option value="">请选择 年</option>
+    </select>
+    <select name="MM" onChange="MMDD(this.value)" id='month'>
+        <option value="">选择 月</option>
+    </select>
+    <select name="DD" onChange="DDD(this.value)" id='day'>
+        <option value="">选择 日</option>
+    </select>
+</form>
+                </div>
+             
+        </div>
+         <div class=' mt20 df wrap ml38'>
+        <div class='f24'>性别：</div>
+        <div class=''><input type="radio"  ng-click='sex=0' name="xxx">男</div>
+        <div class='ml20'><input type="radio" ng-click='sex=1'name="xxx">女</div>
+        <div class='ml20'><input type="radio" ng-click='sex=-1'name="xxx">未知</div>
+        </div>
+        <div class='region mt30 ml38 df wrap'>
+            <div>地区</div>
+            <div class='ml10'>
+                    <select id="sel_Province" style="width:80px"  name="sel_Province">
+                    </select>
+                    <select id="sel_City" >
+                    </select>
+                    <select id="sel_County" name="sel_County"  style='display:none'>
+                    </select>
+            </div>
+           
+        </div>
+  </div>
+    <div class="center-box mt100">
+        <button class="h34 f16 w120 br5 g-btn mr30" ng-click="del()">取消</button>
+        <button id='btn1' class="h34 f16 w120 br5 c-btn bcc cf ml50" ng-click="sat(nameCk,sex,cont)">保存</button>
+    </div>
+</div>
+
+
+

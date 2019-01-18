@@ -1,0 +1,17 @@
+<div class='topic'>
+	<div class='w440 ml10 mt80 '>
+		<div><span class='f24'>话题名称 </span> <input  class='w300 h52 f30 ml10' ng-model="exitName"  style=“outline:none;”></div>
+		<div class='mt30 ml45'>
+			<span class='f24'>排序 </span> <input  class='w300 h52 f30 ml10' onkeyup="value=value.replace(/[^0-9]/g,'')" onpaste="value=value.replace(/[^0-9]/g,'')" oncontextmenu = "value=value.replace(/[^0-9]/g,'')" ng-model="exitNum"  style=“outline:none;”>
+		</div>
+	</div>	
+	<div>
+		
+       
+        	<div class="wrap df mt100">
+		        <button class="h44 f16 w100 br5 g-btn ml50" ng-click="close_modal()">取消</button>
+		        <button id='btn1' class="h44 f16 w100 br5 c-btn bcc cf ml100" ng-click="topicUpdate(exitName,exitNum,exitId)">确定</button>
+   			 </div>
+        
+	</div>
+</div>

@@ -1,0 +1,61 @@
+<div class="finance-modal-value-info" id="test">
+    <div class="close" ng-click="close_modal()">
+        <img src="./images/log/jubaoguanli_close.png" alt="">
+    </div>
+    <div class="center-b-box" >
+        <button class="bt w80 h40 f18" ng-click="currentTime()">实时</button>
+        <div class="center-box">
+            <div class="">
+                <input class="form-control pl15 h40" id="start_date" ng-model="data.startdate" onClick="WdatePicker({onpicking: function (dp) {funcStart(dp.cal.getNewDateStr())},readOnly:true,maxDate:'#F{$dp.$D(\'over_date\',{d: -1})}'});" type="text" />
+            </div>
+            <span class="f16 c85 ml8 mr8"> ~ </span>
+            <div class="">
+               <input class="form-control h40" id="over_date" ng-model="data.overdate" onClick="WdatePicker({onpicking: function (dp) {funcEnd(dp.cal.getNewDateStr())},readOnly:true, minDate:'#F{$dp.$D(\'start_date\',{d: 0})}'});" type="text" />
+            </div>
+        </div>
+        <button class="excel-btn ml28" ><a ng-href="{{outExcel}}">导出</a></button>
+    </div>
+    <div class="income-modal-head center-b-box mt20">
+        <div>
+            <span>今日收入</span>
+            <span>{{incomeData.todayMoney}}</span>
+        </div>
+        <div>
+            <span>累计收入</span>
+            <span>{{incomeData.totalMoney}}</span>
+        </div>
+    </div>
+    <div class="center-start h60 f22 c48">收入明细</div>
+    <div>
+        <div class="center-around bcf8f h40 f18">
+            <span class="w120 center-box">昵称</span>
+            <span class="w120 center-box">电话</span>
+            <span class="w130 center-box">类型</span>
+            <span class="w160 center-box">金额</span>
+            <span class="w160 center-box">时间</span>
+        </div>
+        <div ng-repeat="l in incomeData.moneyList">
+            <div class="center-around bceef h60 f16">
+            	<span class="center-box w120">{{l.nickname}}</span>
+            	<span class="center-box w120">{{l.phone}}</span>
+                <span class="center-box w130">{{l.type}}</span>
+                <span class="center-box w160">{{l.money}}</span>
+                <span class="center-box w160">{{l.time | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+            </div>
+            <hr>
+        </div>
+    </div>
+    
+    <div class="madel-paginations center-end f18">
+        <ul uib-pagination rotate="false" total-items="total" next-text=">" previous-text="<" ng-model="page" max-size="5" items-per-page="8" ng-change="changePage(page)" class="pagination-sm" num-pages="numPages"></ul>
+        <div class="center-b-box w250 ml20">
+            <div>共{{total / 8}}页</div>
+            <div>
+                <span>到</span>
+                <input type="text" class="form-control w50 p0" ng-model="PageNum">
+                <span>页</span>
+            </div>
+            <button class="bt w60 h36 f14" ng-click="JumpPage(PageNum)">确定</button>
+        </div>
+    </div>
+</div>

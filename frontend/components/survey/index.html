@@ -1,0 +1,170 @@
+<div class="survey  ">
+ 	<div class='head  mt20'>
+ 		<h2>用户新增留存行为</h2>
+ 		<div class='boder_h mt5'></div>
+ 	</div>
+ 	<div class='center-start mt5 bcf h70 mt10'>
+            <div class='ml20'>
+                <div class="time-group wrap df ">
+                    <label class="control-label mb0 mt5 mr8 ">查询时间:</label>
+                     <div class="date-time">
+                  <input class="pl15 h40 form-control ng-pristine ng-untouched ng-valid ng-empty" id="start_date" ng-model="startdate" onclick="WdatePicker({onpicking: function (dp) {if (dp.cal.getDateStr() != dp.cal.getNewDateStr()) { funcStart(dp.cal.getNewDateStr())}},readOnly:true,maxDate:'#F{$dp.$D(\'over_date\',{d: 0})}'});" type="text">
+              </div>
+              <span class="f16 c85 ml8 mr8 mt8">至</span>
+              <div class="date-time">
+                  <input class="form-control h40 ng-pristine ng-untouched ng-valid ng-empty" id="over_date" ng-model="overdate" onclick="WdatePicker({onpicking: function (dp) {if (dp.cal.getDateStr() != dp.cal.getNewDateStr()) { funcEnd(dp.cal.getNewDateStr())}},readOnly:true, minDate:'#F{$dp.$D(\'start_date\',{d: 0})}'});" type="text">
+              </div>
+                </div>
+            </div>
+  	</div>
+  <div class="amount-box h250 ">
+		    <div class=" bc2dd w280" >
+			    <div class='f28 cf mt50'>注册用户数</div>
+			    <div class='f24 cf'>{{activeAll.register}}</div>
+		    </div>
+
+		    <div class=" c2dd w280">
+			     <div class='f28 cf mt50'>注册转化率</div>
+			     <div class='f24 cf'>{{activeAll.registerConversion}}%</div>
+		    </div>
+
+		    <div class="bc919 w280">
+			     <div class='f28 cf mt50'>活跃用户数</div>
+			     <div class='f24 cf'>{{activeAll.active}}</div>
+		    </div>
+		    <div class="bcfc8 w280">
+			      <div class='f28 cf mt50'>行为活跃率</div>
+			      <div class='f24 cf'>{{activeAll.behaviorConversion}}%</div>
+		    </div>
+		    <div class="bcf7b w280">
+		    	<div class='f28 cf mt50'>行为用户数</div>
+		    	<div class='f24 cf'>{{activeAll.behavior}}</div>
+		    </div>
+  </div>
+  <div class='center-start mt5 bcf h70 mt10'>
+      
+      <div class='ml20'>
+          <span>数据类型</span>
+                       <select name="" class="form-control f16 p0 w143 ml30" ng-change="potName(potData)"      ng-model="potData.value"  >   
+                        <option value='注册用户'>注册用户</option>
+                        <option value='行为用户'>行为用户</option>
+                        <option value='活跃用户'>活跃用户</option>
+                       </select>
+      </div>
+  	</div>
+  	<div class='mt50 ml100'>
+  		  <div id="main" style="width: 1000px;height:450px;"></div>
+  	</div>
+  <div class='head  mt20'>
+ 		<h2>留存率</h2>
+ 		<div class='boder_h mt5'></div>
+ 	</div>
+ 	<div class='center-start mt5 bcf h70 mt10'>
+            <div class='ml20'>
+                <div class="time-group wrap df ">
+                    <label class="control-label mb0 mt5 mr8 ">查询时间:</label>
+                     <div class="date-time">
+                  <input class="form-control pl15 h40 ng-pristine ng-untouched ng-valid ng-empty" id="start_datea" ng-model="startdate" onclick="WdatePicker({onpicking: function (dp) {if (dp.cal.getDateStr() != dp.cal.getNewDateStr()) { tuncStart(dp.cal.getNewDateStr())}},readOnly:true,maxDate:'#F{$dp.$D(\'over_datea\',{d: -1})}'});" type="text">
+              </div>
+              <span class="f16 c85 ml8 mr8 mt8">至</span>
+              <div class="date-time">
+                  <input class="form-control h40 ng-pristine ng-untouched ng-valid ng-empty" id="over_datea" ng-model="overdate" onclick="WdatePicker({onpicking: function (dp) {if (dp.cal.getDateStr() != dp.cal.getNewDateStr()) { tuncEnd(dp.cal.getNewDateStr())}},readOnly:true, minDate:'#F{$dp.$D(\'start_datea\',{d: 1})}'});" type="text">
+              </div>
+                </div>
+            </div>
+            
+           
+  	</div>
+  	<div>
+  		 <table class="w1582 mt10">
+                <tr class="h50 bcf">
+                    <th class=" tc"><span>日期</span></th>
+                    <th class=" tc"><span>新增用户</span></th>
+                    <th class=" tc"><span>次日</span></th>
+                    <th class=" tc"><span>2天</span></th>
+                    <th class=" tc"><span>3天</span></th>
+                    <th class=" tc"><span>4天</span></th>
+                    <th class=" tc"><span>5天</span></th>
+                    <th class=" tc"><span>6天</span></th>
+                    <th class=" tc"><span>7天</span></th>
+                    <th class=" tc"><span>30天</span></th>
+                </tr>
+                <tr class="f18 h40" ng-repeat="re in RetentionList">
+                    <td class=" tc">{{re.time}}</td>
+                    <td class=" tc">{{re.value}}</td>
+                    <td class=" tc">{{re.date1}}</td>
+                    <td class=" tc">{{re.date2}}</td>
+                    <td class=" tc">{{re.date3}}</td>
+                    <td class=" tc">{{re.date4}}</td>
+                    <td class=" tc">{{re.date5}}</td>
+                    <td class=" tc">{{re.date6}}</td>
+                    <td class=" tc">{{re.date7}}</td>
+                    <td class=" tc">{{re.date30}}</td>
+                </tr>
+               
+             
+               
+                
+            </table>
+            <div class="center-end">
+                <ul uib-pagination rotate="false" total-items="pages" next-text=">" previous-text="<" ng-model="pageNum" max-size="5"  items-per-page="10" ng-change="pageChanged(pageNum)" class="pagination-sm" ></ul>
+                <div class="center-b-box w250 ml20">
+                    <div>共{{Retention.pages }}页</div>
+                   <!--  <div>
+                        <span>到</span>
+                        <input type="text" class="form-control w50 p0" ng-model="pageNum">
+                        <span>页</span>
+                    </div>
+                    <button class="bt w60 h36 f14" ng-click="jumpPage(pageNum)">确定</button> -->
+                </div>
+            </div>
+  	</div>
+  	<div class='head  mt20'>
+ 		<h2>渠道数据</h2>
+ 		<div class='boder_h mt5'></div>
+ 	</div>
+ 		<div class='center-start mt5 bcf h70 mt10'>
+            <div class='ml20'>
+                <div class="time-group wrap df ">
+                    <label class="control-label mb0 mt5 mr8 ">查询时间:</label>
+                    <div class="date-time">
+                  <input class="form-control pl15 h40 ng-pristine ng-untouched ng-valid ng-empty" id="start_dateb" ng-model="startdate" onclick="WdatePicker({onpicking: function (dp) {if (dp.cal.getDateStr() != dp.cal.getNewDateStr()) { auncStart(dp.cal.getNewDateStr())}},readOnly:true,maxDate:'#F{$dp.$D(\'over_dateb\',{d: 0})}'});" type="text">
+              </div>
+
+              <span class="f16 c85 ml8 mr8 mt8">至</span>
+              <div class="date-time">
+                  <input class="form-control h40 ng-pristine ng-untouched ng-valid ng-empty" id="over_dateb" ng-model="overdate" onclick="WdatePicker({onpicking: function (dp) {if (dp.cal.getDateStr() != dp.cal.getNewDateStr()) { auncEnd(dp.cal.getNewDateStr())}},readOnly:true, minDate:'#F{$dp.$D(\'start_dateb\',{d: 0})}'});" type="text">
+              </div>
+                </div>
+            </div>
+            
+           <!--  <div class=' df wrap ml30'>
+            	 <div  class='ml30'><input type="checkbox" >显示环比上周</div>
+            	 <div  class='ml30'><input type="checkbox" >显示环比上月</div>
+            </div> -->
+  	</div>
+  	<div class='mt50 ml100 w1200'>
+ 			<div class='between'>
+ 				<div class='f28'>渠道周期下载数据</div>
+ 				<div class='f24'>总下载量 <span>{{number}}</span></div>
+ 			</div>
+  		  <div id="mrin" style="width: 100%;height:450px;"></div>
+  	</div>
+  	 <div class='ml20 df wrap ml100'>
+  	 	<div>
+  	 		 <span>选择渠道</span>
+                       <select name="" class="form-control f16 p0 w143 "   ng-change="petName(petData)"    ng-model="petData.value"    > 
+                       <option value=''>全部</option>  
+                        <option ng-repeat="co in countChannel" value='{{co.value}}'>{{co.name}}</option>
+                       </select>
+  	 	</div>
+         <div class='ml285 f24'>
+         	{{countName}} 下载量趋势图
+         </div>
+         <div class='ml285 f24 '>渠道下载量<span class='ml30'>{{numbers}}</span></div>
+      </div>
+      <div class='mt50 ml100'>
+  		  <div id="mvin" style="width: 1000px;height:450px;"></div>
+  	</div>
+</div>
+

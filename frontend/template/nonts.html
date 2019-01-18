@@ -1,0 +1,57 @@
+<div class='nont'>
+	
+	 <div class='tc mt10'>
+          <h3>编辑</h3>
+        </div>
+		 <div class="time-group wrap df mt20 ml30 ">
+                    <label class="control-label mb0 mt5 mr8 ">开始时间</label>
+                    <div class="w324">
+                        <input class="form-control pl15 h40" id="start_date_gous" ng-model="startdate" onClick="WdatePicker({onpicked: function(){$(this).trigger('change')},readOnly:true,maxDate:'#F{$dp.$D(\'over_date_gous\',{d: -1})}',dateFmt:'yyyy年MM月dd日 HH时mm分ss秒'});" type="text" />
+                    </div>
+                    <span class="f16 c85 ml8 mr8 mt10">结束时间</span>
+                    <div class="w324">
+                        <input class="form-control h40" id="over_date_gous" ng-model="overdate" onClick="WdatePicker({onpicked: function(){$(this).trigger('ng-change')},readOnly:true, minDate:'#F{$dp.$D(\'start_date_gous\',{d: 1})}',dateFmt:'yyyy年MM月dd日 HH时mm分ss秒'});" type="text" />
+                    </div>
+           		 </div>
+         <div class='ml30 mt20 df wrap'>
+			<span class='f24'>推送间隔 </span> <input  class='w143 h36 f30 ml10' ng-model="notTime" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" style=“outline:none;”>
+			<div class='ml20 '>
+
+		                       <select  class="form-control f16 p0 w120"   ng-model="nontData.value"  ng-init="nontData.value='s'"  > 
+			                        <option value='s'>秒</option>
+			                        <option value='h'>时</option>
+			                        <option value='m'>分</option>
+		                       </select>
+		            	</div>
+		 </div> 
+		 <div class='ml30 mt20'>
+		 	<span class='f24'>公告标题 </span> <input  class='w220 h36 f24 ml5' ng-model="nontName"  style=“outline:none;” >
+		 </div>	
+		 <div class='ml30 mt20'>
+		 	<span class='f24'>持续时间 </span> <input  class='w143 h36 f24 ml5' ng-model="noTime" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" style=“outline:none;” ><span class='ml10'>秒</span>
+		 </div>	
+		 <div class='ml30 mt20'>
+		 	<span class='f24'>优先级</span>
+		                       <select  class="form-control f16 p0 w120 ml30"   ng-model="nont.value" ng-init="nont.value='1'"  > 
+			                        <option value='1'>1级</option>
+			                        <option value='2'>2级</option>
+			                        <option value='3'>3级</option>
+			                        <option value='4'>4级</option>
+		                       </select>
+		 </div>	
+		  <div class='ml30 mt20'>
+		 	<span class='f24'>链接地址 </span> <input  class='w360 h36 f30 ml5' ng-model="nontUrl"  style=“outline:none;”>
+		 </div>	
+		  <div class='ml30 mt20 wrap df'>
+		 	<div class='f24'>公告内容</div>
+		       <textarea class='w720 h300  ml10' type="text"ng-model="nontCont" onkeyup="this.value=this.value.substring(0, 50)"
+    style="resize:none; "></textarea>                
+		 </div>	
+
+<div class="center-box mt30">
+		        <button class="h44 f16 w100 br5 g-btn" ng-click="close_modal()">取消</button>
+		        <button id='btn1' class="h44 f16 w100 br5 c-btn bcc cf ml100" ng-click="abcd(notTime,nontData.value,nontName,noTime,nont.value,nontUrl,nontCont)">保存</button>
+   			 </div>	 
+</div>
+
+     	

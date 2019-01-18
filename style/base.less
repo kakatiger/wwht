@@ -1,0 +1,136 @@
+body,div,dl,dt,dd,ul,li,ol,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin: 0;padding: 0}
+table{border-collapse: collapse;border-spacing: 0;}
+fieldset,img{border: 0}
+address,caption,cite,code,dfn,em,strong,th,var{font-style: normal;font-weight: normal;}
+ol,ul{list-style: none;}
+caption,th{text-align: left;}
+h1,h2,h3,h4,h5,h6{font-size: 1005;font-weight: normal;}
+q:before,q:after{content: ''}
+abbr,acronym{border: 0}
+a{cursor: pointer;text-decoration: none!important;}
+button:focus{outline: none!important}
+hr{
+  margin: 0;
+}
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+body {
+  font-family: PingFang-SC-Medium, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+  height: 100%;
+  width: 100%
+}
+@color:#2dd1ac;
+
+html{
+
+  @firstViewportWidth: 1920px;
+
+  @defaultFontSize: 100px;
+
+  @media screen and (width: @firstViewportWidth){
+    font-size: @defaultFontSize;
+    min-width: 100%;
+  };
+
+  .media(@viewportWidth,@firstViewportWidth:1920px){
+    @media screen and (min-width: @viewportWidth) {
+      font-size: @defaultFontSize / (@firstViewportWidth / @viewportWidth)!important;
+    }
+  };
+
+  .media(1024px);
+  .media(1366px);
+  .media(1280px);
+  .media(1440px);
+  .media(1600px);
+  .media(1920px);
+
+  >body{
+    position: absolute;
+  }
+}
+@media screen and (max-width: 1440px) {
+  html {
+    font-size: 75px !important;
+  }
+}
+
+.form-control {
+  display: inline-block;
+  width: 100%;
+  height: 0.34rem;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  &:focus{
+    border-color:@color!important;
+  };
+  &::-webkit-input-placeholder{
+    font-size: 0.16rem
+  }
+}
+
+.cf00{
+    color: #f00;
+}
+/* 图片放大的代码 */  
+.imgview-mask{  
+    position: fixed;  
+    height: 100%;  
+    width: 100%;  
+    z-index: 999998;  
+    left: 0;  
+    top: 0;  
+    background: #000;  
+    opacity: .75;  
+    filter: alpha(opacity=75);  
+    display: none;  
+}  
+.show-img{  
+    width:9rem;   
+    height: 6rem;  
+    position: fixed; 
+    left: 50%;  
+    top: 50%;  
+    margin: -50px 0 0 -100px;  
+    background: #fff;  
+    z-index: 999999;  
+    margin-left: -4.5rem;  
+    margin-top: -3rem;  
+    display: none;  
+}  
+.show-img img{
+    max-width:100%;
+    max-height: 100%; 
+}  
+.show-img a{  
+    position: absolute;  
+    width: 0.3rem;  
+    height: 0.3rem;  
+    right: 0.3rem;  
+    top: 0.3rem;  
+    background:url(../../images/configManage/shangjiaguanli_delete_ico.png) no-repeat;  
+}  

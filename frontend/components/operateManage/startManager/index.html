@@ -1,0 +1,78 @@
+<!-- 启动页管理 这个是启动页管理 -->
+<div class='startupManage'>
+<div class='between mt30'>
+    <div>
+      <h3>启动页管理</h3>
+    </div>
+    <div class='ml100 center-end'>
+             <button class="h34 f16 w100 br5 c-btn bcc cf  mr56" ng-click='bannerIncrease()' >新增</button>     
+    </div>
+  </div>
+  <div class='boder_h mt10'></div>	
+ <div class='mt30'>
+ 	 <table class="w1582 mt10">
+                <tr class="h50 bcf">
+                    <th class="w80 tc">序号<span></span></th>
+                    <th class="w154 tc ">广告名称<span></span></th>
+                    <th class="w154 tc">图片<span></span></th>
+                    <th class="w180 tc">创建时间</th>
+                    <th class="w154 tc">启用时间</th>
+                    <th class="w154 tc">状态</th>
+                    <th class="w242 tc">操作<span></span></th>
+                </tr>
+               
+                <tr class="f18 h92" ng-repeat="banner in startManagerList">
+                    <td class='tc'>{{$index + 1 }}</td>
+                    <!-- 名称 -->
+                    <td class='tc'>{{banner.name}}</td>
+                    <!-- 图片 -->
+                    <td class='tc'><img class='w100 h70 ' src="{{banner.picUrl}}" ng-click="changePic($event)"></td>
+                    <!-- 创建时间 -->
+                    <td class='tc'>
+                      {{banner.createTime | date:'yyyy-MM-dd HH:mm:ss'}}
+                    </td>
+                    <!-- 启用时间 -->
+                    <td class='tc'>
+                      {{banner.startTime | date:'yyyy-MM-dd'}} <br>
+                      ———— <br>
+                      {{banner.endTime | date:'yyyy-MM-dd'}}
+                    </td>
+                    <!-- 当前状态 -->
+                    <td class='tc'>
+                    	<span ng-if="banner.state==2">禁用</span>
+                        <span ng-if="banner.state==1">启用</span>
+                        <span ng-if="banner.state==3">预启用</span>
+                    </td>
+                    <!-- 操作栏 -->
+                    <td class='tc'>
+                        <div class="df wrap ml50">
+                            <button class="bt w72 h36 f14"><a class="cf w100_" ng-click="exit_bannerIncrease(banner.billboardId,banner.picUrl,banner.billboardName,banner.time,banner.startTime,banner.endTime,banner.linkUrl,banner.linkType)" >编辑</a></button>
+                             <span class="bt w72 h36 f14 ml30 mr30 lh2 fw200 " ng-click=" bannerUpd(banner.billboardId,i='1');"  ng-if="banner.state==2 ||banner.state==3">启用</span>
+                             <span class="bt w72 h36 f14 ml30 mr30 lh2 fw200 " ng-click=" bannerUpd(banner.billboardId,i='2');" ng-if="banner.state==1">禁用</span>
+                        </div>
+                        
+                    </td>
+                </tr>
+            </table>
+ </div>
+    <div class="center-end">
+                <ul uib-pagination rotate="false" total-items="pages" next-text=">" previous-text="<" ng-model="pageNum" max-size="5"  items-per-page="10" ng-change="pageChanged(pageNum)" class="pagination-sm" ></ul>
+              <!--   <div class="center-b-box w250 ml20">
+                    <div>共{{fictitious.pages }}页</div>
+                    <div>
+                        <span>到</span>
+                        <input type="text" class="form-control w50 p0" ng-model="pageNum">
+                        <span>页</span>
+                    </div>
+                    <button class="bt w60 h36 f14" ng-click="jumpPage(pageNum)">确定</button>
+                </div> -->
+            </div>
+
+</div>
+<div id="js-imgview-mask" class="imgview-mask" style="display: none;" ng-click="closePic()"><!--黑盒子 --></div>  
+<div id="js-imgview" class="show-img"><!--显示放大的图片  -->
+    <div class="w100_ h100_ p20 center-box">
+        <img id="bigimage">  
+        <a ng-click="closePic()"></a>
+    </div>
+</div>

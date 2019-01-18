@@ -1,0 +1,31 @@
+<div class='role '>
+	<div class='w440 ml285 mt40 tc'>
+		<span class='f24'>角色名称 </span> <span class='f24 ml50'>{{username}}</span>
+	</div>	
+	<div>
+		 <div class="role-content ml10">
+       	    <div class="mt10" ng-repeat="(keys,val) in roleMenuList">
+       	    	<!--<div ng-if="val.isOpt == 1">{{val.menuId}}</div>-->
+	       	 		<div class="c363 p5">
+	       	 			{{val.name}}
+	       	 			<input type="checkbox" id='{{val.menuId}}' class="chk_1" name='{{val.name}}' ng-checked="val.isOpt ==1" ng-click="onlyChecked($event,val.menuId);"/>
+	       	 		</div>
+	       	 		<div class="center-v mt5">
+	       	 			<div class="w200" ng-repeat="tag in val.nodes">
+	       	 				<!--<div ng-if="tag.isOpt == 1">{{tag.menuId}}</div>-->
+	       	 				<!--<input type="checkbox" id='{{tag.menuId}}' name='{{tag.name}}' ng-checked = 'tag.isOpt == 1' ng-click="updateSelection($event,tag.menuId)"/>-->
+	       	 				<input type="checkbox" id='{{tag.menuId}}' class="chk_1" name='{{tag.name}}' ng-checked="tag.isOpt ==1" ng-click="onlyChecked($event,tag.menuId);"/> 
+	       	 				<label for='{{tag.menuId}}'>{{tag.name}}</label>
+	       	 			</div>
+	       	 			
+	       	 		</div>
+       	    </div>
+        </div>
+       
+        	<div class="center-box mt20">
+		        <button class="h44 f16 w100 br5 g-btn" ng-click="close_modal()">取消</button>
+		        <button id='btn1' class="h44 f16 w100 br5 c-btn bcc cf ml300" ng-click="updateMenu()">添加</button>
+   			 </div>
+        
+	</div>
+</div>

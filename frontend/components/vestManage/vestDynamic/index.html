@@ -1,0 +1,54 @@
+<div class='vsetDynamicn w1582'>
+	<div class='head  mt20'>
+ 		<h2>动态管理</h2>
+ 		<div class='boder_h mt5'></div>
+ 	</div>
+ 	<div class='mt10'>
+ 		<div class='vest_content w1582 ' ng-repeat="fic in fictitiousContentList">
+ 			<div class='df wrap mt30' >
+		 		<div class='vest_url df wrap' >
+		 			<div ng-repeat="v in fic.contentMedias">
+		 				<div  ng-if="v.mediaType==3"><img  class='img2' src="{{v.url}}" ng-click="changePic($event)"></div>
+		 				<video ng-if="v.mediaType==2" class='mt50'  src="{{v.url}}" width="320" height="240" controls>
+								</video>
+		 			</div>
+		 			
+		 		</div>
+	 			<div class='vest_text'>
+	 				{{fic.content}}
+	 			</div>
+	 			<div class='vest_operation' >
+	 				<div class='ml30 mt30' ng-repeat="v in fic.contentMedias"><audio ng-if="v.mediaType==1" src="{{v.url}}" controls="controls"></audio></div>
+	 				<div class='mt20 tc'><span class='cu' ng-click='cc({id: fic.id})'>评论 （{{fic.commentTotal}}）</span> <span>点赞（{{fic.supportTotal}}）</span></div>
+	 				<div class='tc mt20'>发布时间   {{fic.createTime}}</div>
+	 				
+	 				<div class='df wrap mt30'>
+                             <span class="bt w72 h36 f14 mro  lh2 fw200 "ng-click= "topSet(fic.id,i='设为隐私');" ng-if='fic.showOrHide ==1'>设为隐私</span>
+                      		 <span class="bt w72 h36 f14 mro  lh2 fw200 " ng-click= "topSet(fic.id,i='设为开放');" ng-if='fic.showOrHide ==0'>设为开放</span>
+                             <span class="bt w72 h36 f14 mro  lh2 fw200 "ng-click="del(fic.id)">删除</span>
+                        </div>
+	 			</div>
+ 			</div>
+ 			
+ 		</div>
+ 		  <div class="center-end">
+                <ul uib-pagination rotate="false" total-items="pages" next-text=">" previous-text="<" ng-model="pageNum" max-size="5"  items-per-page="10" ng-change="pageChanged(pageNum)" class="pagination-sm" ></ul>
+              <!--   <div class="center-b-box w250 ml20">
+                    <div>共{{fictitiousContent.pages }}页</div>
+                    <div>
+                        <span>到</span>
+                        <input type="text" class="form-control w50 p0" ng-model="pageNum">
+                        <span>页</span>
+                    </div>
+                    <button class="bt w60 h36 f14" ng-click="jumpPage(pageNum)">确定</button>
+                </div> -->
+            </div>
+ 	</div>
+</div>
+<div id="js-imgview-mask" class="imgview-mask" style="display: none;" ng-click="closePic()"><!--黑盒子 --></div>  
+<div id="js-imgview" class="show-img"><!--显示放大的图片  -->
+    <div class="w100_ h100_ p20 center-box">
+        <img id="bigimage">  
+        <a ng-click="closePic()"></a>
+    </div>
+</div>

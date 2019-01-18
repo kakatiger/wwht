@@ -1,0 +1,106 @@
+<div class="finance-tmp">
+    <div class="close" ng-click="close_modal()">
+        <img src="./images/log/jubaoguanli_close.png" alt="">
+    </div>
+    <div class="main">
+        <div class="tabs center-b-box">
+            <span ng-click="a = 1" ng-class="{'active-b':a==1}" ng-init="a=1" class="applys">提现申请</span>
+            <span ng-click="a = 2" ng-class="{'active-b':a==2}" class="account">账户明细</span>
+            <span ng-click="a = 3" ng-class="{'active-b':a==3}" class="history">历史提现</span>
+        </div>
+        <div class="tab-view">
+            <!-- *提现申请 -->
+            <div class="applys" ng-if="a==1">
+                <div class="applys-detail bcf f18">
+                    <div class="center-b-box">
+                        <span class="c6">申请用户</span>
+                        <span class="c3">{{withdrawInfoData.account}}</span>
+                    </div>
+                    <div class="center-b-box mt10">
+                        <span class="c6">申请时间</span>
+                        <span class="c3">{{withdrawInfoData.dateTime | date:'yyyy-MM-dd mm:ss'}}</span>
+                    </div>
+                    <div class="center-b-box mt10">
+                        <span class="c6">累计提现金额</span>
+                        <span class="c3">￥{{withdrawInfoData.totalMoney}}</span>
+                    </div>
+                    <div class="center-b-box mt10">
+                        <span class="c6">可提现金额</span>
+                        <span class="c3">￥{{withdrawInfoData.haveMoney}}</span>
+                    </div>
+                    <div class="center-b-box mt10">
+                        <span class="c6">申请提现金额</span>
+                        <span class="c3">￥{{withdrawInfoData.money}}</span>
+                    </div>
+                </div>
+                <div class="applys-account center-box h70 mt10 f18 c3 bcf">
+                    支付宝账号：<span>{{withdrawInfoData.aliPayLogon}}</span>
+                </div>
+                <!-- *历史提现查看 -->
+                <div class="state" ng-if="history">
+                    <div class="h90 state-msg">
+                        <div class="c6">状态：
+                            <span class="c3" ng-if="withdrawInfoData.status == 'success'">通过</span>
+                            <span class="c3" ng-if="withdrawInfoData.status == 'fail'">未通过</span>
+                        </div>
+                <div class="c6">时间：<span class="c3">{{withdrawInfoData.operatTime | date:'yyyy-MM-dd'}}</span></div>
+                    </div>
+                    <div ng-if="withdrawInfoData.status == 'fail'">
+                        <textarea  class="form-control f18" disabled>{{withdrawInfoData.remarks}}</textarea>
+                    </div>
+                </div>
+                <!-- *提现申请查看 -->
+                <div ng-if="applys">
+                    <div class="btn-group h70 center-box">
+                        <button class="btn f18" ng-click="passManage($event);x = 1" ng-class="{'active-b':x==1}">通过</button>
+                        <button class="btn f18 ml152" ng-click="x = 2" ng-class="{'active-b':x==2}">不通过</button>
+                    </div>
+                    <div class="nopass h350" ng-if="x==2">
+                        <textarea placeholder="不通过理由……" ng-model="remarks" class="form-control f18"></textarea>
+                        <div class="center-box">
+                            <button class="bt w90 h40" ng-click="passManage($event,remarks)">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- *账户明细 -->
+            <div class="account" ng-if="a==2">
+                <table class="w100_">
+                    <tbody>
+                        <tr class="h70"  ng-repeat="account in userIncomeListData" ng-class-even="bcf" ng-class-odd="bc369">
+                            <td>
+                                <div class="center-b-box">
+                                    <div>
+                                        <div class="c6">{{account.content}}</div>
+                                        <div class="c9">{{account.dateTime | date:'dd-MM-yy'}}</div>
+                                    </div>
+                                    <div class="c3">￥{{account.amountMoney}}</div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- *历史提现 -->
+            <div class="history" ng-if="a==3">
+                <table class="w100_">
+                    <tbody>
+                        <tr class="h70" ng-repeat="oldList in withdrawOldListData">
+                            <td>
+                                <div class="center-b-box">
+                                    <div>
+                                        <div class="c6" ng-if="oldList.status == 'success'">提现成功</div>
+                                        <div class="c6" ng-if="oldList.status == 'fail'">提现失败</div>
+                                        <div class="c9">{{oldList.dateTime | date:'dd-MM-yy'}}</div>
+                                    </div>
+                                    <div class="c3">￥{{oldList.money}}</div>
+                                </div>
+                                <div class="reason h70 bcf c6 mt10 center-box" ng-if="oldList.status == 'fail'">{{oldList.remarks}}</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

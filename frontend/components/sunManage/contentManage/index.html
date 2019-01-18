@@ -1,0 +1,65 @@
+<div class='contentManage'>
+	<div class="config-manage w1582">
+	    <div class="center-b-box bcf cp">
+	        <span class="center-box w394 h56 f20" ui-sref="contentManage" ui-sref-active="active-b" >内容待处理({{sunPending.content}})</span>
+	        <span class="center-box w394 h56 f20" ui-sref="commentManage" ui-sref-active="active-b">评论待处理({{sunPending.comment}})</span>
+	        <span class="center-box w394 h56 f20"  ui-sref="opinionManage" ui-sref-active="active-b" >建议待处理({{sunPending.avatarUser}})</span>
+	        <span class="center-box w394 h56 f20"  ui-sref="portraitManage" ui-sref-active="active-b" >头像待处理({{sunPending.avatar}})</span>
+	    </div>
+ 
+	</div>
+	<div  class='mt10'>
+		<div  class='wrap df sun_conter'>
+			<div class='sun_url df wrap' >
+		 			<div ng-repeat="v in sunConList">
+		 				<div  ng-if="v.mediaType==3"><img  class='sun_img' src="{{v.url}}" ng-click="changePic($event)"></div>
+		 				<video ng-if="v.mediaType==2" class='mt50'  src="{{v.url}}" width="320" height="240" controls>
+								</video>
+		 			</div>	
+			</div>
+			<div class='sun_text'>
+				<div class='sun_text_head center-b-box'>
+					<div class='f30 fw pt10 ml30'>文章</div>
+					<!--   ng-repeat="v in fic.contentMedias"-->
+					<div class='mr56 mt10' ng-repeat="v in sunConList"  ><audio src="{{v.url}}"  ng-if="v.mediaType==1" controls="controls"></audio></div>
+				</div>
+				<div class='sun_text_content'>{{sunCon.content}}</div>
+			</div>
+		</div>
+		<div class='sun_cz wrap df'>
+			<div class='pt30  sun_cz_a'><span class='f24 ml30'>处罚记录</span><span class='f18 ml30'>被屏蔽:</span> <span>{{sunCon.seal}}</span></div>
+			<div class='wrap df  sun_cz_b pt30'>
+				<div class='f24 ml30'>类型:<span class='ml30'>{{sunCon.type}}</span></div>
+				<div class='wrap df '>	
+					<div class="bt w72 h36 f14  ml30  lh2  " ng-click='col(sunCon.userId,sunCon.id,sunCon.contentId,sunCon.content)'>封禁</div>
+					<div class="bt w72 h36 f14  ml30 lh2  " ng-click='war(sunCon.userId,sunCon.id,sunCon.contentId,sunCon.content)'>警告</div>
+					<div class="bt w72 h36 f14  ml30 lh2  " ng-click='shie(sunCon.userId,sunCon.id,sunCon.contentId,sunCon.content)'>屏蔽</div>
+					<div class="bt w72 h36 f14  ml30 lh2  " ng-click='noth(sunCon.userId,sunCon.id,sunCon.contentId,sunCon.content)'>不处理</div>
+				</div>
+				
+			</div>
+		</div>
+		<div class='sun_info wrap df'> 
+			<div class='ml65 mt50'><img class='sun_info_img' src="{{sunCon.photo}}"></div>
+			<div class='ml50 mt80'>
+		        <div>
+					<span>{{sunCon.nickname}}</span>
+					<span class='ml50'>用户等级:{{sunCon.level}}</span>
+			    </div>
+			     <div class='mt30'>
+					<span>用户ID：{{sunCon.contentId}}</span>
+					<span class='ml50'>动态 :{{sunCon.contentTotal}}条</span>
+					<span class='ml50'>粉丝 :{{sunCon.friendsTotal}}</span>
+				    </div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<div id="js-imgview-mask" class="imgview-mask" style="display: none;" ng-click="closePic()"><!--黑盒子 --></div>  
+<div id="js-imgview" class="show-img"><!--显示放大的图片  -->
+    <div class="w100_ h100_ p20 center-box">
+        <img id="bigimage">  
+        <a ng-click="closePic()"></a>
+    </div>
+</div>
